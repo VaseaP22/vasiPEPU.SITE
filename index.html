@@ -3,114 +3,119 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PEPU Unchained | Buy Crypto Fast</title>
+  <title>PEPU Unchained | Premium Meme Crypto Gateway</title>
   <meta
     name="description"
-    content="Sito crypto premium collegato all'ecosistema PEPU Unchained. Connetti il wallet, esplora il bridge, il DEX e inizia subito."
+    content="PEPU Unchained premium crypto landing page con wallet connect, glow animations, tokenomics e link ufficiali PEPU."
   />
   <style>
     :root {
-      --bg: #07111f;
-      --bg-2: #0b1930;
-      --panel: rgba(14, 30, 56, 0.72);
-      --panel-2: rgba(18, 38, 68, 0.88);
-      --text: #eff6ff;
-      --muted: #9fb3d1;
-      --line: rgba(255, 255, 255, 0.1);
-      --green: #74ff9f;
-      --green-2: #37d67a;
-      --blue: #63aaff;
-      --pink: #ff67d4;
+      --bg: #06111d;
+      --bg-2: #0a1730;
+      --panel: rgba(12, 25, 46, 0.78);
+      --panel-2: rgba(16, 33, 60, 0.94);
+      --text: #eef6ff;
+      --muted: #98aed2;
+      --line: rgba(255,255,255,0.08);
+      --green: #7dff9f;
+      --green-2: #2ddb75;
+      --blue: #76a8ff;
+      --pink: #ff6bd8;
       --gold: #ffd76f;
       --danger: #ff7b7b;
-      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
-      --radius: 22px;
+      --shadow: 0 24px 70px rgba(0,0,0,0.36);
+      --radius: 24px;
       --max: 1200px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(116, 255, 159, 0.1), transparent 28%),
-        radial-gradient(circle at top right, rgba(99, 170, 255, 0.15), transparent 30%),
-        radial-gradient(circle at bottom center, rgba(255, 103, 212, 0.08), transparent 24%),
-        linear-gradient(180deg, #07111f 0%, #081221 30%, #0a1730 100%);
       color: var(--text);
       min-height: 100vh;
       overflow-x: hidden;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(125,255,159,0.08), transparent 24%),
+        radial-gradient(circle at 85% 10%, rgba(118,168,255,0.14), transparent 26%),
+        radial-gradient(circle at 50% 100%, rgba(255,107,216,0.08), transparent 26%),
+        linear-gradient(180deg, #06111d 0%, #081423 32%, #0b1731 100%);
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      border-radius: 999px;
+      filter: blur(70px);
+      opacity: 0.5;
+      z-index: -1;
+      animation: floatGlow 8s ease-in-out infinite;
+      pointer-events: none;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
+    body::before {
+      width: 280px;
+      height: 280px;
+      background: rgba(125,255,159,0.15);
+      top: 80px;
+      left: -60px;
     }
+
+    body::after {
+      width: 320px;
+      height: 320px;
+      background: rgba(118,168,255,0.14);
+      bottom: 80px;
+      right: -80px;
+      animation-delay: 1.5s;
+    }
+
+    @keyframes floatGlow {
+      0%, 100% { transform: translateY(0) translateX(0) scale(1); }
+      50% { transform: translateY(-12px) translateX(10px) scale(1.04); }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 0 rgba(125,255,159,0); }
+      50% { box-shadow: 0 0 28px rgba(125,255,159,0.22); }
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-120%); }
+      100% { transform: translateX(220%); }
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img, svg { display: block; max-width: 100%; }
 
     .container {
       width: min(var(--max), calc(100% - 32px));
       margin: 0 auto;
     }
 
-    .glass {
-      background: var(--panel);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(116, 255, 159, 0.18);
-      background: rgba(116, 255, 159, 0.08);
-      color: #ddffe7;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-    }
-
-    .badge .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: var(--green);
-      box-shadow: 0 0 14px rgba(116, 255, 159, 0.95);
-    }
-
-    .section {
-      padding: 90px 0;
-    }
+    .section { padding: 92px 0; }
 
     .section-title {
-      font-size: clamp(32px, 4vw, 54px);
-      line-height: 1.05;
-      letter-spacing: -0.03em;
-      margin-bottom: 16px;
+      font-size: clamp(34px, 4vw, 56px);
+      line-height: 1.04;
+      letter-spacing: -0.04em;
+      margin-bottom: 14px;
     }
 
     .section-subtitle {
       color: var(--muted);
       font-size: 17px;
-      line-height: 1.7;
-      max-width: 780px;
+      line-height: 1.75;
+      max-width: 820px;
+    }
+
+    .glass {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
     }
 
     .btn {
@@ -121,37 +126,69 @@
       border: none;
       border-radius: 16px;
       padding: 15px 22px;
-      font-size: 15px;
       font-weight: 800;
+      font-size: 15px;
       cursor: pointer;
       transition: 0.22s ease;
       white-space: nowrap;
+      position: relative;
+      overflow: hidden;
     }
 
-    .btn:hover {
-      transform: translateY(-2px);
-    }
+    .btn:hover { transform: translateY(-2px); }
 
     .btn-primary {
+      color: #06111d;
       background: linear-gradient(135deg, var(--green), var(--green-2));
-      color: #04111b;
-      box-shadow: 0 12px 30px rgba(55, 214, 122, 0.28);
+      box-shadow: 0 14px 34px rgba(45,219,117,0.28);
+      animation: pulseGlow 3.2s ease-in-out infinite;
+    }
+
+    .btn-primary::after,
+    .btn-gold::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      width: 40%;
+      transform: skewX(-22deg) translateX(-120%);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.28), transparent);
+      animation: shine 3.5s linear infinite;
+      pointer-events: none;
     }
 
     .btn-secondary {
-      background: rgba(255, 255, 255, 0.05);
       color: var(--text);
+      background: rgba(255,255,255,0.05);
       border: 1px solid var(--line);
     }
 
     .btn-gold {
-      background: linear-gradient(135deg, #ffe28a, var(--gold));
-      color: #261700;
-      box-shadow: 0 12px 30px rgba(255, 215, 111, 0.22);
+      color: #241500;
+      background: linear-gradient(135deg, #ffe7a6, var(--gold));
+      box-shadow: 0 14px 30px rgba(255,215,111,0.22);
     }
 
-    .btn-full {
-      width: 100%;
+    .btn-full { width: 100%; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(125,255,159,0.08);
+      border: 1px solid rgba(125,255,159,0.18);
+      font-size: 13px;
+      font-weight: 800;
+      color: #dfffea;
+    }
+
+    .badge .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--green);
+      box-shadow: 0 0 14px rgba(125,255,159,0.95);
     }
 
     /* Header */
@@ -159,10 +196,10 @@
       position: sticky;
       top: 0;
       z-index: 50;
+      background: rgba(6,17,29,0.62);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
-      background: rgba(7, 17, 31, 0.58);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
     .nav-wrap {
@@ -180,46 +217,27 @@
       min-width: 0;
     }
 
-    .brand-mark {
-      width: 48px;
-      height: 48px;
-      border-radius: 16px;
-      position: relative;
+    .brand-logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
       overflow: hidden;
-      background:
-        radial-gradient(circle at 30% 30%, #8bffb1, transparent 32%),
-        radial-gradient(circle at 70% 70%, #7f8cff, transparent 32%),
-        linear-gradient(135deg, #0f2a49, #112140);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);
-    }
-
-    .brand-mark::after {
-      content: "P";
-      position: absolute;
-      inset: 0;
-      display: grid;
-      place-items: center;
-      font-weight: 900;
-      font-size: 22px;
-      color: white;
-      text-shadow: 0 4px 24px rgba(255, 255, 255, 0.18);
-    }
-
-    .brand-text {
-      min-width: 0;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.28);
+      background: linear-gradient(135deg, rgba(125,255,159,0.12), rgba(118,168,255,0.12));
+      flex-shrink: 0;
     }
 
     .brand-title {
       font-size: 16px;
       font-weight: 900;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.05em;
     }
 
     .brand-sub {
       font-size: 12px;
       color: var(--muted);
-      margin-top: 2px;
+      margin-top: 3px;
     }
 
     .nav-links {
@@ -235,9 +253,7 @@
       transition: 0.18s ease;
     }
 
-    .nav-links a:hover {
-      color: var(--green);
-    }
+    .nav-links a:hover { color: var(--green); }
 
     .nav-actions {
       display: flex;
@@ -264,7 +280,7 @@
       height: 8px;
       border-radius: 999px;
       background: var(--green);
-      box-shadow: 0 0 14px rgba(116, 255, 159, 0.95);
+      box-shadow: 0 0 14px rgba(125,255,159,0.95);
     }
 
     .menu-toggle {
@@ -299,20 +315,13 @@
     .menu-toggle.active::before { transform: rotate(45deg); top: 23px; }
     .menu-toggle.active::after { transform: rotate(-45deg); top: 23px; }
 
-    .mobile-menu {
-      display: none;
-      padding-bottom: 18px;
-    }
-
-    .mobile-menu.open {
-      display: block;
-      animation: fadeUp 0.22s ease;
-    }
+    .mobile-menu { display: none; padding-bottom: 18px; }
+    .mobile-menu.open { display: block; }
 
     .mobile-menu-card {
       padding: 18px;
       border-radius: 20px;
-      background: rgba(10, 23, 46, 0.92);
+      background: rgba(10, 23, 46, 0.94);
       border: 1px solid var(--line);
       box-shadow: var(--shadow);
     }
@@ -324,7 +333,7 @@
     }
 
     .mobile-links a {
-      padding: 14px 14px;
+      padding: 14px;
       border-radius: 14px;
       background: rgba(255,255,255,0.035);
       color: #e8f1ff;
@@ -333,37 +342,35 @@
       border: 1px solid rgba(255,255,255,0.05);
     }
 
-    .mobile-actions {
-      display: grid;
-      gap: 10px;
-    }
+    .mobile-actions { display: grid; gap: 10px; }
 
     /* Hero */
     .hero {
       position: relative;
-      padding: 68px 0 60px;
+      padding: 68px 0 56px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
+      grid-template-columns: 1.08fr 0.92fr;
       gap: 32px;
       align-items: center;
     }
 
     .hero-copy h1 {
-      font-size: clamp(42px, 6vw, 82px);
-      line-height: 0.95;
-      letter-spacing: -0.05em;
-      margin: 18px 0 18px;
+      font-size: clamp(44px, 6vw, 82px);
+      line-height: 0.94;
+      letter-spacing: -0.055em;
+      margin: 18px 0;
       max-width: 760px;
     }
 
-    .hero-copy h1 .glow {
-      background: linear-gradient(135deg, #ffffff 0%, #8bffb1 40%, #78a9ff 100%);
+    .hero-copy h1 .glow-text {
+      background: linear-gradient(135deg, #ffffff 0%, #94ffba 38%, #79aaff 100%);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      filter: drop-shadow(0 0 18px rgba(125,255,159,0.10));
     }
 
     .hero-copy p {
@@ -402,44 +409,43 @@
       font-weight: 700;
     }
 
-    .hero-visual {
-      position: relative;
-    }
-
     .hero-card {
       padding: 24px;
-      border-radius: 28px;
+      border-radius: 30px;
       background:
         linear-gradient(180deg, rgba(19, 38, 66, 0.96), rgba(10, 20, 38, 0.9));
       border: 1px solid rgba(255,255,255,0.09);
       box-shadow: var(--shadow);
-      overflow: hidden;
       position: relative;
-      min-height: 560px;
+      overflow: hidden;
+      min-height: 580px;
     }
 
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      width: 240px;
-      height: 240px;
-      border-radius: 999px;
-      background: rgba(116, 255, 159, 0.12);
-      filter: blur(28px);
-      top: -20px;
-      right: -10px;
-    }
-
+    .hero-card::before,
     .hero-card::after {
       content: "";
       position: absolute;
-      width: 220px;
-      height: 220px;
       border-radius: 999px;
-      background: rgba(99, 170, 255, 0.12);
-      filter: blur(26px);
-      bottom: -30px;
-      left: -30px;
+      filter: blur(28px);
+      opacity: 0.7;
+      animation: floatGlow 7s ease-in-out infinite;
+    }
+
+    .hero-card::before {
+      width: 240px;
+      height: 240px;
+      background: rgba(125,255,159,0.12);
+      top: -24px;
+      right: -16px;
+    }
+
+    .hero-card::after {
+      width: 240px;
+      height: 240px;
+      background: rgba(118,168,255,0.12);
+      bottom: -24px;
+      left: -24px;
+      animation-delay: 1s;
     }
 
     .hero-topbar {
@@ -452,7 +458,7 @@
       z-index: 2;
     }
 
-    .hero-topbar .tiny {
+    .tiny {
       font-size: 12px;
       color: var(--muted);
       font-weight: 800;
@@ -467,8 +473,8 @@
       font-size: 12px;
       font-weight: 800;
       color: #d8ffe4;
-      background: rgba(116, 255, 159, 0.08);
-      border: 1px solid rgba(116, 255, 159, 0.16);
+      background: rgba(125,255,159,0.08);
+      border: 1px solid rgba(125,255,159,0.16);
       padding: 9px 12px;
       border-radius: 999px;
     }
@@ -478,7 +484,7 @@
       height: 8px;
       border-radius: 999px;
       background: var(--green);
-      box-shadow: 0 0 14px rgba(116, 255, 159, 0.95);
+      box-shadow: 0 0 14px rgba(125,255,159,0.95);
     }
 
     .chain-showcase {
@@ -488,13 +494,28 @@
       gap: 18px;
     }
 
-    .meme-card {
+    .meme-card,
+    .wallet-panel,
+    .token-contract,
+    .feature-card,
+    .step-card,
+    .link-card,
+    .faq-item,
+    .token-card,
+    .community-card {
       border-radius: 24px;
-      padding: 22px;
-      background:
-        linear-gradient(135deg, rgba(116,255,159,0.09), rgba(99,170,255,0.07)),
-        rgba(255,255,255,0.03);
+      padding: 24px;
+      background: var(--panel-2);
       border: 1px solid rgba(255,255,255,0.07);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .meme-card {
+      background:
+        linear-gradient(135deg, rgba(125,255,159,0.09), rgba(118,168,255,0.07)),
+        rgba(255,255,255,0.03);
     }
 
     .meme-title {
@@ -505,23 +526,20 @@
       margin-bottom: 14px;
     }
 
-    .meme-title h3 {
-      font-size: 22px;
-      letter-spacing: -0.02em;
-    }
+    .meme-title h3 { font-size: 22px; letter-spacing: -0.02em; }
 
-    .meme-title .tag {
+    .tag {
       font-size: 12px;
-      font-weight: 800;
+      font-weight: 900;
       color: #13210d;
-      background: linear-gradient(135deg, var(--green), #e8ff90);
+      background: linear-gradient(135deg, var(--green), #ebff98);
       padding: 8px 10px;
       border-radius: 999px;
     }
 
-    .meme-body {
-      display: grid;
-      gap: 12px;
+    .tag.gold {
+      color: #352100;
+      background: linear-gradient(135deg, #ffd76f, #ffebb4);
     }
 
     .stat-box {
@@ -554,25 +572,13 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
-      margin-top: 8px;
+      margin-top: 14px;
     }
 
-    .wallet-panel {
-      border-radius: 24px;
-      padding: 22px;
-      background: rgba(255,255,255,0.045);
-      border: 1px solid rgba(255,255,255,0.06);
-    }
+    .wallet-panel h4,
+    .token-contract h4 { font-size: 16px; margin-bottom: 14px; }
 
-    .wallet-panel h4 {
-      font-size: 16px;
-      margin-bottom: 14px;
-    }
-
-    .wallet-list {
-      display: grid;
-      gap: 10px;
-    }
+    .wallet-list { display: grid; gap: 10px; }
 
     .wallet-row {
       display: flex;
@@ -599,24 +605,42 @@
       text-align: right;
     }
 
-    /* Cards */
-    .grid-3 {
+    .contract-box {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.045);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .contract-box code {
+      color: #eaffef;
+      font-size: 13px;
+      word-break: break-all;
+      line-height: 1.5;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    .copy-btn {
+      flex-shrink: 0;
+      min-width: 90px;
+    }
+
+    .grid-3,
+    .steps-grid,
+    .links-grid,
+    .tokenomics-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
       gap: 22px;
       margin-top: 34px;
     }
 
-    .feature-card,
-    .step-card,
-    .link-card,
-    .faq-item {
-      border-radius: 24px;
-      padding: 24px;
-      background: var(--panel-2);
-      border: 1px solid rgba(255,255,255,0.07);
-      box-shadow: var(--shadow);
-    }
+    .grid-3,
+    .steps-grid,
+    .links-grid { grid-template-columns: repeat(3, 1fr); }
 
     .feature-icon,
     .step-number {
@@ -628,13 +652,16 @@
       font-size: 22px;
       font-weight: 900;
       margin-bottom: 18px;
-      background: linear-gradient(135deg, rgba(116,255,159,0.2), rgba(99,170,255,0.24));
+      background: linear-gradient(135deg, rgba(125,255,159,0.2), rgba(118,168,255,0.24));
       border: 1px solid rgba(255,255,255,0.08);
     }
 
     .feature-card h3,
     .step-card h3,
-    .link-card h3 {
+    .link-card h3,
+    .token-card h3,
+    .community-card h3,
+    .faq-item h3 {
       font-size: 22px;
       margin-bottom: 12px;
       letter-spacing: -0.02em;
@@ -643,25 +670,94 @@
     .feature-card p,
     .step-card p,
     .link-card p,
+    .token-card p,
+    .community-card p,
     .faq-item p {
       color: var(--muted);
       line-height: 1.75;
       font-size: 15px;
     }
 
-    .steps-grid,
-    .links-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-      margin-top: 34px;
-    }
-
-    .link-card .mini-actions {
+    .link-card .mini-actions,
+    .community-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       margin-top: 18px;
+    }
+
+    .tokenomics-grid {
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: start;
+    }
+
+    .supply-card {
+      padding: 28px;
+      border-radius: 28px;
+      background:
+        linear-gradient(135deg, rgba(125,255,159,0.08), rgba(118,168,255,0.07)),
+        rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .supply-label {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .supply-value {
+      font-size: clamp(32px, 5vw, 62px);
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #fff, #9affbf 45%, #85b2ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .allocations {
+      display: grid;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .allocation {
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .allocation-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 10px;
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .bar {
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      overflow: hidden;
+    }
+
+    .bar > span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--green), var(--blue));
+      box-shadow: 0 0 18px rgba(125,255,159,0.18);
     }
 
     .faq-grid {
@@ -670,17 +766,12 @@
       margin-top: 34px;
     }
 
-    .faq-item h3 {
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-
     .cta-box {
       margin-top: 40px;
       padding: 30px;
       border-radius: 28px;
       background:
-        linear-gradient(135deg, rgba(116,255,159,0.1), rgba(99,170,255,0.08)),
+        linear-gradient(135deg, rgba(125,255,159,0.1), rgba(118,168,255,0.08)),
         rgba(255,255,255,0.04);
       border: 1px solid rgba(255,255,255,0.08);
       display: flex;
@@ -688,6 +779,7 @@
       justify-content: space-between;
       gap: 24px;
       flex-wrap: wrap;
+      box-shadow: var(--shadow);
     }
 
     .cta-box h3 {
@@ -740,18 +832,14 @@
       width: calc(100% - 36px);
       border-radius: 18px;
       padding: 14px 16px;
-      background: rgba(10, 23, 46, 0.94);
+      background: rgba(10,23,46,0.96);
       border: 1px solid rgba(255,255,255,0.08);
       box-shadow: var(--shadow);
       display: none;
     }
 
-    .status-bar.show {
-      display: block;
-      animation: fadeUp 0.22s ease;
-    }
-
-    .status-bar.success { border-color: rgba(116,255,159,0.22); }
+    .status-bar.show { display: block; }
+    .status-bar.success { border-color: rgba(125,255,159,0.22); }
     .status-bar.error { border-color: rgba(255,123,123,0.22); }
 
     .status-title {
@@ -766,28 +854,16 @@
       color: var(--muted);
     }
 
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(12px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
     @media (max-width: 1080px) {
       .hero-grid,
       .grid-3,
       .steps-grid,
-      .links-grid {
+      .links-grid,
+      .tokenomics-grid {
         grid-template-columns: 1fr;
       }
 
-      .hero-card {
-        min-height: auto;
-      }
+      .hero-card { min-height: auto; }
     }
 
     @media (max-width: 900px) {
@@ -797,52 +873,30 @@
         display: none;
       }
 
-      .menu-toggle {
-        display: inline-block;
-      }
-
-      .hero {
-        padding-top: 44px;
-      }
-
-      .hero-copy p {
-        font-size: 17px;
-      }
+      .menu-toggle { display: inline-block; }
+      .hero { padding-top: 44px; }
+      .hero-copy p { font-size: 17px; }
     }
 
     @media (max-width: 640px) {
-      .container {
-        width: min(var(--max), calc(100% - 20px));
-      }
-
-      .section {
-        padding: 68px 0;
-      }
-
-      .hero-copy h1 {
-        font-size: 42px;
-      }
-
-      .hero-actions {
-        display: grid;
-        grid-template-columns: 1fr;
-      }
-
-      .btn {
-        width: 100%;
-      }
-
+      .container { width: min(var(--max), calc(100% - 20px)); }
+      .section { padding: 68px 0; }
+      .hero-copy h1 { font-size: 42px; }
+      .hero-actions { display: grid; grid-template-columns: 1fr; }
+      .btn { width: 100%; }
       .stat-box,
-      .action-row {
-        grid-template-columns: 1fr;
-      }
-
+      .action-row { grid-template-columns: 1fr; }
       .feature-card,
       .step-card,
       .link-card,
       .faq-item,
       .hero-card,
-      .cta-box {
+      .cta-box,
+      .meme-card,
+      .wallet-panel,
+      .token-contract,
+      .community-card,
+      .supply-card {
         padding: 20px;
       }
     }
@@ -853,22 +907,49 @@
     <div class="container">
       <div class="nav-wrap">
         <a href="#top" class="brand">
-          <div class="brand-mark"></div>
-          <div class="brand-text">
+          <div class="brand-logo" aria-hidden="true">
+            <svg viewBox="0 0 120 120" width="52" height="52" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="bgGrad" x1="0" x2="1" y1="0" y2="1">
+                  <stop offset="0%" stop-color="#0e1f38"/>
+                  <stop offset="100%" stop-color="#173966"/>
+                </linearGradient>
+                <linearGradient id="strokeGrad" x1="0" x2="1" y1="0" y2="1">
+                  <stop offset="0%" stop-color="#8cffb5"/>
+                  <stop offset="100%" stop-color="#7ea7ff"/>
+                </linearGradient>
+                <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="4" result="blur"/>
+                  <feMerge>
+                    <feMergeNode in="blur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+              </defs>
+              <rect x="2" y="2" width="116" height="116" rx="28" fill="url(#bgGrad)" stroke="rgba(255,255,255,0.14)"/>
+              <circle cx="38" cy="30" r="18" fill="#8cffb5" opacity="0.18"/>
+              <circle cx="88" cy="88" r="24" fill="#79aaff" opacity="0.16"/>
+              <path d="M34 76V34h31c12 0 20 6 20 16 0 7-4 12-10 14 8 2 13 8 13 16 0 12-9 18-24 18H34zM50 46v13h12c4 0 7-2 7-6 0-5-3-7-8-7H50zm0 24v16h14c5 0 8-3 8-8s-4-8-10-8H50z"
+                    fill="url(#strokeGrad)" filter="url(#glow)"/>
+              <path d="M23 92c17-6 31-8 43-7" stroke="#8cffb5" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+            </svg>
+          </div>
+          <div>
             <div class="brand-title">PEPU UNCHAINED</div>
-            <div class="brand-sub">Crypto gateway • premium meme UX</div>
+            <div class="brand-sub">premium meme crypto gateway</div>
           </div>
         </a>
 
         <nav class="nav-links" aria-label="Navigazione principale">
           <a href="#features">Features</a>
           <a href="#how">Come funziona</a>
-          <a href="#access">Accesso rapido</a>
+          <a href="#tokenomics">Tokenomics</a>
+          <a href="#access">Link ufficiali</a>
           <a href="#faq">FAQ</a>
         </nav>
 
         <div class="nav-actions">
-          <div class="wallet-chip" id="headerWalletChip">
+          <div class="wallet-chip">
             <span class="mini-dot"></span>
             <span id="headerWalletText">Wallet non connesso</span>
           </div>
@@ -886,7 +967,8 @@
           <div class="mobile-links">
             <a href="#features">Features</a>
             <a href="#how">Come funziona</a>
-            <a href="#access">Accesso rapido</a>
+            <a href="#tokenomics">Tokenomics</a>
+            <a href="#access">Link ufficiali</a>
             <a href="#faq">FAQ</a>
           </div>
           <div class="mobile-actions">
@@ -905,69 +987,67 @@
           <div class="hero-copy">
             <div class="badge">
               <span class="dot"></span>
-              Ecosistema crypto con stile premium
+              Layer 2 meme ecosystem • premium entry
             </div>
 
             <h1>
-              Compra, esplora e connettiti a
-              <span class="glow">PEPU Unchained</span>
-              in modo semplice.
+              Porta gli utenti dentro
+              <span class="glow-text">PEPU Unchained</span>
+              con uno stile davvero premium.
             </h1>
 
             <p>
-              Una landing page moderna per facilitare l’accesso all’ecosistema PEPU:
-              collega il wallet, apri bridge e DEX, consulta la guida e porta gli utenti
-              dentro un’esperienza crypto più pulita, più credibile e più veloce.
+              Una landing page professionale per facilitare l’accesso all’ecosistema PEPU:
+              collega il wallet, apri bridge e swap, consulta la guida ufficiale e mostra
+              la tokenomics in modo chiaro e moderno.
             </p>
 
             <div class="hero-actions">
               <button class="btn btn-primary" id="connectWalletBtnHero">Connect Wallet</button>
-              <a class="btn btn-gold" href="#access">Buy / Bridge Now</a>
-              <a class="btn btn-secondary" href="#how">Scopri come funziona</a>
+              <a class="btn btn-gold" href="https://guide.pepeunchained.com/pepu-guide/how-to-use-and-buy-usdpepu-step-by-step-for-beginners" target="_blank" rel="noopener">Buy Guide</a>
+              <a class="btn btn-secondary" href="https://pepubridge.com/" target="_blank" rel="noopener">Apri Bridge</a>
             </div>
 
             <div class="hero-metrics">
-              <div class="metric-pill">⚡ UX veloce</div>
+              <div class="metric-pill">⚡ Fast Layer 2</div>
               <div class="metric-pill">🔐 Non-custodial</div>
-              <div class="metric-pill">🌉 Bridge ready</div>
+              <div class="metric-pill">🌉 Official Bridge</div>
               <div class="metric-pill">💎 Meme + premium</div>
             </div>
           </div>
 
-          <div class="hero-visual">
+          <div>
             <div class="hero-card">
               <div class="hero-topbar">
-                <div class="tiny">Launch panel</div>
+                <div class="tiny">Access panel</div>
                 <div class="signal"><span></span> Wallet ready</div>
               </div>
 
               <div class="chain-showcase">
                 <div class="meme-card">
                   <div class="meme-title">
-                    <h3>PEPU Access Hub</h3>
-                    <div class="tag">PREMIUM</div>
+                    <h3>PEPU Launch Hub</h3>
+                    <div class="tag">LIVE LINKS</div>
                   </div>
 
-                  <div class="meme-body">
-                    <div class="stat-box">
-                      <div class="stat-item">
-                        <div class="k">Mode</div>
-                        <div class="v">Non-custodial</div>
-                      </div>
-                      <div class="stat-item">
-                        <div class="k">Flow</div>
-                        <div class="v">Bridge / Swap</div>
-                      </div>
-                      <div class="stat-item">
-                        <div class="k">Style</div>
-                        <div class="v">Meme Premium</div>
-                      </div>
+                  <div class="stat-box">
+                    <div class="stat-item">
+                      <div class="k">Website</div>
+                      <div class="v">Official</div>
                     </div>
+                    <div class="stat-item">
+                      <div class="k">DEX</div>
+                      <div class="v">PepuSwap</div>
+                    </div>
+                    <div class="stat-item">
+                      <div class="k">Bridge</div>
+                      <div class="v">V2 Bridge</div>
+                    </div>
+                  </div>
 
-                    <div class="action-row">
-                      <a class="btn btn-primary" href="#access">Apri accesso rapido</a>
-                      <button class="btn btn-secondary" id="addNetworkBtn">Aggiungi rete</button>
-                    </div>
+                  <div class="action-row">
+                    <a class="btn btn-primary" href="https://pepuswap.com/" target="_blank" rel="noopener">Open PepuSwap</a>
+                    <a class="btn btn-secondary" href="https://pepuscan.com/" target="_blank" rel="noopener">Open Explorer</a>
                   </div>
                 </div>
 
@@ -989,38 +1069,41 @@
                   </div>
                 </div>
 
+                <div class="token-contract">
+                  <h4>$PEPU Contract (Ethereum)</h4>
+                  <div class="contract-box">
+                    <code id="tokenContract">0x93aA0ccD1e5628d3A841C4DbdF602D9eb04085d6</code>
+                    <button class="btn btn-secondary copy-btn" id="copyContractBtn">Copia</button>
+                  </div>
+                </div>
+
                 <div class="meme-card">
                   <div class="meme-title">
                     <h3>Fast Entry</h3>
-                    <div class="tag" style="background: linear-gradient(135deg, #ffd76f, #ffe79f); color:#352100;">HOT</div>
+                    <div class="tag gold">HOT</div>
                   </div>
-                  <div class="meme-body">
-                    <p style="color: var(--muted); line-height:1.7;">
-                      Porta gli utenti direttamente alle azioni che contano:
-                      bridge, documentazione, acquisto e strumenti rapidi,
-                      senza far sembrare il progetto improvvisato.
-                    </p>
-                    <div class="action-row">
-                      <a class="btn btn-gold" href="#access">Start now</a>
-                      <a class="btn btn-secondary" href="#faq">Leggi FAQ</a>
-                    </div>
+                  <p style="color: var(--muted); line-height: 1.75;">
+                    Accesso rapido ai link ufficiali PEPU: website, docs, bridge, PepuSwap,
+                    PepuScan, PumpPad e guida buy per creare un funnel semplice e credibile.
+                  </p>
+                  <div class="action-row">
+                    <a class="btn btn-gold" href="#access">Official Links</a>
+                    <a class="btn btn-secondary" href="#tokenomics">View Tokenomics</a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>
 
     <section class="section" id="features">
       <div class="container">
-        <h2 class="section-title">Una vetrina crypto che sembra davvero premium</h2>
+        <h2 class="section-title">Una vetrina crypto che sembra solida</h2>
         <p class="section-subtitle">
-          Questa pagina è pensata per dare agli utenti una percezione più solida del progetto:
-          grafica curata, accesso wallet, call to action chiare e una struttura che può essere
-          espansa in una dApp completa.
+          Questa pagina è pensata per trasformare un semplice sito promo in un access point
+          credibile verso l’ecosistema PEPU, con stile “meme/crypto premium” ma senza sembrare amatoriale.
         </p>
 
         <div class="grid-3">
@@ -1035,19 +1118,19 @@
 
           <article class="feature-card">
             <div class="feature-icon">🌉</div>
-            <h3>Bridge & Buy Flow</h3>
+            <h3>Official Access Flow</h3>
             <p>
-              Flusso semplice per portare l’utente verso bridge, acquisto o strumenti ufficiali
-              dell’ecosistema, mantenendo un’esperienza non-custodial.
+              Pulsanti già collegati ai link ufficiali PEPU per bridge, swap, docs,
+              guide e block explorer.
             </p>
           </article>
 
           <article class="feature-card">
             <div class="feature-icon">💎</div>
-            <h3>Meme / Premium Design</h3>
+            <h3>Glow Premium UI</h3>
             <p>
-              Estetica ispirata al mondo meme coin, ma ripulita per sembrare più affidabile,
-              più elegante e più adatta a un vero progetto pubblico.
+              Effetti glow, gradienti, SVG brand mark e layout responsive per dare al progetto
+              una presenza più forte online.
             </p>
           </article>
         </div>
@@ -1058,8 +1141,8 @@
       <div class="container">
         <h2 class="section-title">Come funziona</h2>
         <p class="section-subtitle">
-          Il flusso ideale è semplice: l’utente atterra sul sito, collega il wallet,
-          apre gli strumenti PEPU e completa il proprio percorso di accesso all’ecosistema.
+          Il flusso ideale è semplice: connetti wallet, manda l’utente agli strumenti ufficiali,
+          poi espandi la base in una dApp completa.
         </p>
 
         <div class="steps-grid">
@@ -1067,17 +1150,17 @@
             <div class="step-number">1</div>
             <h3>Connetti il wallet</h3>
             <p>
-              L’utente collega il proprio wallet EVM direttamente dal browser e visualizza
-              account, chain ID e stato generale della sessione.
+              Il visitatore collega il proprio wallet EVM dal browser e vede subito stato wallet,
+              chain ID e saldo base.
             </p>
           </article>
 
           <article class="step-card">
             <div class="step-number">2</div>
-            <h3>Apri bridge o docs</h3>
+            <h3>Apri Bridge / Swap / Guide</h3>
             <p>
-              Il sito può inviare l’utente al bridge, al DEX, alla documentazione o a una guida acquisto,
-              rendendo il percorso più chiaro e lineare.
+              Il sito reindirizza verso strumenti ufficiali PEPU e semplifica il percorso
+              verso bridge, swap, docs e guida acquisto.
             </p>
           </article>
 
@@ -1085,64 +1168,185 @@
             <div class="step-number">3</div>
             <h3>Espandi in una dApp</h3>
             <p>
-              In una seconda fase puoi aggiungere quotazioni live, token balance, add network,
-              referral, analytics e componenti Web3 più avanzati.
+              Nel passo successivo puoi aggiungere analytics, referral, token balances,
+              add network, dashboard e componenti Web3 avanzati.
             </p>
           </article>
         </div>
       </div>
     </section>
 
+    <section class="section" id="tokenomics">
+      <div class="container">
+        <h2 class="section-title">Tokenomics</h2>
+        <p class="section-subtitle">
+          Sezione pronta da mostrare nella landing. I valori sotto seguono il whitepaper pubblico di PEPU.
+        </p>
+
+        <div class="tokenomics-grid">
+          <div class="supply-card">
+            <div class="supply-label">Total Supply</div>
+            <div class="supply-value">16,000,000,000 PEPU</div>
+            <p style="color: var(--muted); line-height: 1.75;">
+              Una presentazione visiva chiara della supply aiuta a rendere la landing più completa
+              e più credibile per chi entra nel progetto.
+            </p>
+
+            <div class="allocations">
+              <div class="allocation">
+                <div class="allocation-top">
+                  <span>Community Rewards</span>
+                  <span>50%</span>
+                </div>
+                <div class="bar"><span style="width: 50%;"></span></div>
+              </div>
+
+              <div class="allocation">
+                <div class="allocation-top">
+                  <span>Presale</span>
+                  <span>20%</span>
+                </div>
+                <div class="bar"><span style="width: 20%;"></span></div>
+              </div>
+
+              <div class="allocation">
+                <div class="allocation-top">
+                  <span>Marketing</span>
+                  <span>10%</span>
+                </div>
+                <div class="bar"><span style="width: 10%;"></span></div>
+              </div>
+
+              <div class="allocation">
+                <div class="allocation-top">
+                  <span>Liquidity</span>
+                  <span>10%</span>
+                </div>
+                <div class="bar"><span style="width: 10%;"></span></div>
+              </div>
+
+              <div class="allocation">
+                <div class="allocation-top">
+                  <span>Project Finance</span>
+                  <span>5%</span>
+                </div>
+                <div class="bar"><span style="width: 5%;"></span></div>
+              </div>
+
+              <div class="allocation">
+                <div class="allocation-top">
+                  <span>Chain Inventory</span>
+                  <span>5%</span>
+                </div>
+                <div class="bar"><span style="width: 5%;"></span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="community-card">
+            <h3>Token Overview</h3>
+            <p>
+              Usa questa sezione per spiegare subito a chi arriva sul sito dove leggere la documentazione,
+              come comprare il token e dove verificare transazioni e attività on-chain.
+            </p>
+
+            <div class="community-actions">
+              <a class="btn btn-primary" href="https://guide.pepeunchained.com/" target="_blank" rel="noopener">Open Docs</a>
+              <a class="btn btn-secondary" href="https://pepuscan.com/" target="_blank" rel="noopener">Open PepuScan</a>
+            </div>
+
+            <div style="height: 18px;"></div>
+
+            <h3>Useful links</h3>
+            <p>
+              Inseriti direttamente nel codice: website, bridge, PepuSwap, explorer, PumpPad
+              e guida ufficiale all’acquisto di PEPU.
+            </p>
+
+            <div class="community-actions">
+              <a class="btn btn-gold" href="https://pepeunchained.com/" target="_blank" rel="noopener">Website</a>
+              <a class="btn btn-secondary" href="https://guide.pepeunchained.com/pepu-guide/how-to-use-and-buy-usdpepu-step-by-step-for-beginners" target="_blank" rel="noopener">Buy Guide</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="access">
       <div class="container">
-        <h2 class="section-title">Accesso rapido</h2>
+        <h2 class="section-title">Link ufficiali già inseriti</h2>
         <p class="section-subtitle">
-          Qui puoi collegare i tuoi link ufficiali. Al momento trovi pulsanti demo pronti da sostituire
-          con gli URL definitivi del tuo progetto.
+          Questi pulsanti sono già collegati ai principali riferimenti pubblici dell’ecosistema PEPU.
         </p>
 
         <div class="links-grid">
           <article class="link-card">
             <h3>Bridge</h3>
             <p>
-              Collega qui il bridge ufficiale o la pagina di trasferimento asset tra Ethereum
-              e l’ecosistema PEPU.
+              Accesso diretto al bridge ufficiale per trasferire asset verso Pepe Unchained.
             </p>
             <div class="mini-actions">
-              <a class="btn btn-primary" href="#" target="_blank" rel="noopener">Apri Bridge</a>
+              <a class="btn btn-primary" href="https://pepubridge.com/" target="_blank" rel="noopener">Apri Bridge</a>
             </div>
           </article>
 
           <article class="link-card">
-            <h3>DEX / Swap</h3>
+            <h3>PepuSwap</h3>
             <p>
-              Porta l’utente verso lo swap o il DEX dell’ecosistema per facilitare l’ingresso
-              e lo scambio dei token.
+              Collegamento diretto allo swap / DEX dell’ecosistema PEPU.
             </p>
             <div class="mini-actions">
-              <a class="btn btn-primary" href="#" target="_blank" rel="noopener">Apri DEX</a>
+              <a class="btn btn-primary" href="https://pepuswap.com/" target="_blank" rel="noopener">Apri PepuSwap</a>
             </div>
           </article>
 
           <article class="link-card">
-            <h3>Guida / Buy</h3>
+            <h3>PepuScan</h3>
             <p>
-              Aggiungi una guida ufficiale, una pagina tutorial o un on-ramp esterno per
-              facilitare l’acquisto in modo più semplice.
+              Block explorer per verificare transazioni, wallet e attività on-chain.
             </p>
             <div class="mini-actions">
-              <a class="btn btn-gold" href="#" target="_blank" rel="noopener">Buy Now</a>
+              <a class="btn btn-secondary" href="https://pepuscan.com/" target="_blank" rel="noopener">Apri Explorer</a>
+            </div>
+          </article>
+
+          <article class="link-card">
+            <h3>Official Docs</h3>
+            <p>
+              Documentazione ufficiale con ecosistema, bridge, DEX, guide e risorse per sviluppatori.
+            </p>
+            <div class="mini-actions">
+              <a class="btn btn-primary" href="https://guide.pepeunchained.com/" target="_blank" rel="noopener">Apri Docs</a>
+            </div>
+          </article>
+
+          <article class="link-card">
+            <h3>Buy Guide</h3>
+            <p>
+              Guida ufficiale step-by-step per comprare e usare $PEPU.
+            </p>
+            <div class="mini-actions">
+              <a class="btn btn-gold" href="https://guide.pepeunchained.com/pepu-guide/how-to-use-and-buy-usdpepu-step-by-step-for-beginners" target="_blank" rel="noopener">Open Guide</a>
+            </div>
+          </article>
+
+          <article class="link-card">
+            <h3>PumpPad</h3>
+            <p>
+              Accesso rapido al launchpad collegato all’ecosistema PEPU.
+            </p>
+            <div class="mini-actions">
+              <a class="btn btn-secondary" href="https://pumppad.gg/" target="_blank" rel="noopener">Open PumpPad</a>
             </div>
           </article>
         </div>
 
         <div class="cta-box">
           <div>
-            <h3>Pronto per diventare una vera dApp Web3</h3>
+            <h3>Base pronta per il prossimo step</h3>
             <p>
-              Questa è una base professionale in solo HTML/CSS/JS. Puoi usarla subito come landing page,
-              oppure trasformarla nel prossimo step in un progetto Next.js con wallet libraries,
-              lettura token, dashboard e funzioni avanzate.
+              Questa versione è perfetta come landing premium in HTML puro. Il prossimo upgrade naturale
+              è convertirla in Next.js con componenti Web3 veri, analytics e dashboard token.
             </p>
           </div>
           <button class="btn btn-primary" id="connectWalletBtnCta">Connect Wallet</button>
@@ -1154,38 +1358,38 @@
       <div class="container">
         <h2 class="section-title">FAQ</h2>
         <p class="section-subtitle">
-          Domande utili da mostrare agli utenti per chiarire il funzionamento del sito.
+          Testi utili per chiarire subito agli utenti cosa fa il sito.
         </p>
 
         <div class="faq-grid">
           <article class="faq-item">
             <h3>Il sito custodisce i fondi?</h3>
             <p>
-              No. Questa struttura è pensata come interfaccia non-custodial: l’utente usa il proprio wallet
-              e conferma le operazioni dal proprio provider Web3.
+              No. Questa struttura è pensata come interfaccia non-custodial:
+              l’utente usa il proprio wallet e conferma le operazioni dal proprio provider Web3.
             </p>
           </article>
 
           <article class="faq-item">
             <h3>Serve MetaMask?</h3>
             <p>
-              Serve un wallet EVM compatibile con `window.ethereum`, come MetaMask o altri browser wallet simili.
+              Serve un wallet EVM compatibile con <code>window.ethereum</code>, come MetaMask
+              o wallet simili disponibili come estensione browser.
             </p>
           </article>
 
           <article class="faq-item">
-            <h3>Posso aggiungere la rete PEPU?</h3>
+            <h3>Il contract address di PEPU è già visibile?</h3>
             <p>
-              Sì. Il pulsante è già predisposto. Devi solo inserire i parametri ufficiali della rete
-              dentro lo script prima della pubblicazione.
+              Sì. Nel pannello hero trovi il contract address mostrato e copiabile con un click.
             </p>
           </article>
 
           <article class="faq-item">
-            <h3>Si può collegare un acquisto con carta?</h3>
+            <h3>Posso aggiungere la rete PEPU direttamente dal sito?</h3>
             <p>
-              Sì, ma di solito conviene usare partner esterni di fiat on-ramp. Questo riduce complessità tecnica,
-              legale e operativa rispetto a una piattaforma custodial.
+              Sì, ma conviene farlo solo dopo aver confermato i parametri mainnet definitivi.
+              In questa versione ho inserito i link ufficiali verificati e ho evitato di hardcodare una config mainnet non confermata.
             </p>
           </article>
         </div>
@@ -1197,15 +1401,15 @@
     <div class="container">
       <div class="footer-wrap">
         <div class="footer-note">
-          Questo template è una base frontend. Prima di andare online, aggiungi i link ufficiali,
-          i parametri della rete PEPU e i disclaimer legali relativi ai servizi crypto mostrati sul sito.
+          Template frontend premium per l’ecosistema PEPU. Prima di pubblicare in produzione,
+          aggiungi eventuali disclaimer legali, analytics, branding definitivo e configurazioni rete confermate.
         </div>
 
         <div class="footer-links">
           <a href="#top">Top</a>
-          <a href="#features">Features</a>
-          <a href="#how">Come funziona</a>
-          <a href="#faq">FAQ</a>
+          <a href="#tokenomics">Tokenomics</a>
+          <a href="https://pepeunchained.com/" target="_blank" rel="noopener">Website</a>
+          <a href="https://guide.pepeunchained.com/" target="_blank" rel="noopener">Docs</a>
         </div>
       </div>
     </div>
@@ -1228,27 +1432,17 @@
       document.getElementById("connectWalletBtnCta")
     ].filter(Boolean);
 
-    const addNetworkBtn = document.getElementById("addNetworkBtn");
     const headerWalletText = document.getElementById("headerWalletText");
     const walletAddress = document.getElementById("walletAddress");
     const walletChain = document.getElementById("walletChain");
     const walletBalance = document.getElementById("walletBalance");
 
+    const copyContractBtn = document.getElementById("copyContractBtn");
+    const tokenContract = document.getElementById("tokenContract").textContent.trim();
+
     const statusBar = document.getElementById("statusBar");
     const statusTitle = document.getElementById("statusTitle");
     const statusText = document.getElementById("statusText");
-
-    const PEPU_NETWORK = {
-      chainIdHex: "", // es: "0x1234"
-      chainName: "Pepe Unchained",
-      rpcUrls: [],
-      blockExplorerUrls: [],
-      nativeCurrency: {
-        name: "ETH",
-        symbol: "ETH",
-        decimals: 18
-      }
-    };
 
     function toggleMenu(forceClose = false) {
       const shouldOpen = forceClose ? false : !mobileMenu.classList.contains("open");
@@ -1274,7 +1468,7 @@
       clearTimeout(showStatus._timer);
       showStatus._timer = setTimeout(() => {
         statusBar.className = "status-bar";
-      }, 3600);
+      }, 3400);
     }
 
     function setWalletDisconnected() {
@@ -1366,68 +1560,23 @@
       }
     }
 
-    async function addPepuNetwork() {
-      if (!window.ethereum) {
-        showStatus(
-          "Wallet richiesto",
-          "Per aggiungere la rete serve un wallet browser come MetaMask.",
-          "error"
-        );
-        return;
-      }
-
-      if (
-        !PEPU_NETWORK.chainIdHex ||
-        !PEPU_NETWORK.rpcUrls.length ||
-        !PEPU_NETWORK.blockExplorerUrls.length
-      ) {
-        showStatus(
-          "Parametri rete mancanti",
-          "Inserisci chainId, RPC e block explorer ufficiali di PEPU nello script prima di usare questo pulsante.",
-          "error"
-        );
-        return;
-      }
-
+    async function copyContract() {
       try {
-        await window.ethereum.request({
-          method: "wallet_addEthereumChain",
-          params: [{
-            chainId: PEPU_NETWORK.chainIdHex,
-            chainName: PEPU_NETWORK.chainName,
-            rpcUrls: PEPU_NETWORK.rpcUrls,
-            blockExplorerUrls: PEPU_NETWORK.blockExplorerUrls,
-            nativeCurrency: PEPU_NETWORK.nativeCurrency
-          }]
-        });
-
-        showStatus(
-          "Rete aggiunta",
-          "La rete PEPU è stata proposta al wallet con successo.",
-          "success"
-        );
+        await navigator.clipboard.writeText(tokenContract);
+        showStatus("Contract copiato", "L'indirizzo PEPU è stato copiato negli appunti.", "success");
       } catch (error) {
-        showStatus(
-          "Operazione non completata",
-          "Il wallet ha annullato o rifiutato l'aggiunta della rete.",
-          "error"
-        );
+        showStatus("Copia non riuscita", "Non sono riuscito a copiare il contract address.", "error");
       }
     }
 
+    copyContractBtn?.addEventListener("click", copyContract);
     connectButtons.forEach(btn => btn.addEventListener("click", connectWallet));
-    addNetworkBtn?.addEventListener("click", addPepuNetwork);
 
     if (window.ethereum) {
       refreshWalletUI();
 
-      window.ethereum.on?.("accountsChanged", () => {
-        refreshWalletUI();
-      });
-
-      window.ethereum.on?.("chainChanged", () => {
-        refreshWalletUI();
-      });
+      window.ethereum.on?.("accountsChanged", refreshWalletUI);
+      window.ethereum.on?.("chainChanged", refreshWalletUI);
     } else {
       setWalletDisconnected();
     }
