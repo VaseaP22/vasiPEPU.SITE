@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PEPU Unchained | Buy Crypto Fast</title>
+  <meta
+    name="description"
+    content="Sito crypto premium collegato all'ecosistema PEPU Unchained. Connetti il wallet, esplora il bridge, il DEX e inizia subito."
+  />
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg-2: #0b1930;
+      --panel: rgba(14, 30, 56, 0.72);
+      --panel-2: rgba(18, 38, 68, 0.88);
+      --text: #eff6ff;
+      --muted: #9fb3d1;
+      --line: rgba(255, 255, 255, 0.1);
+      --green: #74ff9f;
+      --green-2: #37d67a;
+      --blue: #63aaff;
+      --pink: #ff67d4;
+      --gold: #ffd76f;
+      --danger: #ff7b7b;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      --radius: 22px;
+      --max: 1200px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(116, 255, 159, 0.1), transparent 28%),
+        radial-gradient(circle at top right, rgba(99, 170, 255, 0.15), transparent 30%),
+        radial-gradient(circle at bottom center, rgba(255, 103, 212, 0.08), transparent 24%),
+        linear-gradient(180deg, #07111f 0%, #081221 30%, #0a1730 100%);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .glass {
+      background: var(--panel);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(116, 255, 159, 0.18);
+      background: rgba(116, 255, 159, 0.08);
+      color: #ddffe7;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .badge .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--green);
+      box-shadow: 0 0 14px rgba(116, 255, 159, 0.95);
+    }
+
+    .section {
+      padding: 90px 0;
+    }
+
+    .section-title {
+      font-size: clamp(32px, 4vw, 54px);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.7;
+      max-width: 780px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: none;
+      border-radius: 16px;
+      padding: 15px 22px;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: 0.22s ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--green), var(--green-2));
+      color: #04111b;
+      box-shadow: 0 12px 30px rgba(55, 214, 122, 0.28);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text);
+      border: 1px solid var(--line);
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #ffe28a, var(--gold));
+      color: #261700;
+      box-shadow: 0 12px 30px rgba(255, 215, 111, 0.22);
+    }
+
+    .btn-full {
+      width: 100%;
+    }
+
+    /* Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      background: rgba(7, 17, 31, 0.58);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-wrap {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 30% 30%, #8bffb1, transparent 32%),
+        radial-gradient(circle at 70% 70%, #7f8cff, transparent 32%),
+        linear-gradient(135deg, #0f2a49, #112140);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);
+    }
+
+    .brand-mark::after {
+      content: "P";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: 22px;
+      color: white;
+      text-shadow: 0 4px 24px rgba(255, 255, 255, 0.18);
+    }
+
+    .brand-text {
+      min-width: 0;
+    }
+
+    .brand-title {
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-sub {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+    }
+
+    .nav-links a {
+      color: #dce8fb;
+      font-size: 14px;
+      font-weight: 700;
+      transition: 0.18s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--green);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .wallet-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 0 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--line);
+      font-size: 14px;
+      font-weight: 700;
+      color: #dce9ff;
+    }
+
+    .wallet-chip .mini-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--green);
+      box-shadow: 0 0 14px rgba(116, 255, 159, 0.95);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      cursor: pointer;
+      position: relative;
+    }
+
+    .menu-toggle span,
+    .menu-toggle::before,
+    .menu-toggle::after {
+      content: "";
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      height: 2px;
+      background: white;
+      border-radius: 999px;
+      transition: 0.2s ease;
+    }
+
+    .menu-toggle span { top: 23px; }
+    .menu-toggle::before { top: 16px; }
+    .menu-toggle::after { top: 30px; }
+
+    .menu-toggle.active span { opacity: 0; }
+    .menu-toggle.active::before { transform: rotate(45deg); top: 23px; }
+    .menu-toggle.active::after { transform: rotate(-45deg); top: 23px; }
+
+    .mobile-menu {
+      display: none;
+      padding-bottom: 18px;
+    }
+
+    .mobile-menu.open {
+      display: block;
+      animation: fadeUp 0.22s ease;
+    }
+
+    .mobile-menu-card {
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(10, 23, 46, 0.92);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .mobile-links {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .mobile-links a {
+      padding: 14px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.035);
+      color: #e8f1ff;
+      font-size: 15px;
+      font-weight: 700;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .mobile-actions {
+      display: grid;
+      gap: 10px;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      padding: 68px 0 60px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(42px, 6vw, 82px);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+      margin: 18px 0 18px;
+      max-width: 760px;
+    }
+
+    .hero-copy h1 .glow {
+      background: linear-gradient(135deg, #ffffff 0%, #8bffb1 40%, #78a9ff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-copy p {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.75;
+      max-width: 700px;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .hero-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .metric-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 42px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.045);
+      border: 1px solid rgba(255,255,255,0.06);
+      color: #d9e8ff;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-card {
+      padding: 24px;
+      border-radius: 28px;
+      background:
+        linear-gradient(180deg, rgba(19, 38, 66, 0.96), rgba(10, 20, 38, 0.9));
+      border: 1px solid rgba(255,255,255,0.09);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+      min-height: 560px;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      border-radius: 999px;
+      background: rgba(116, 255, 159, 0.12);
+      filter: blur(28px);
+      top: -20px;
+      right: -10px;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 999px;
+      background: rgba(99, 170, 255, 0.12);
+      filter: blur(26px);
+      bottom: -30px;
+      left: -30px;
+    }
+
+    .hero-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-topbar .tiny {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .signal {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 800;
+      color: #d8ffe4;
+      background: rgba(116, 255, 159, 0.08);
+      border: 1px solid rgba(116, 255, 159, 0.16);
+      padding: 9px 12px;
+      border-radius: 999px;
+    }
+
+    .signal span {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--green);
+      box-shadow: 0 0 14px rgba(116, 255, 159, 0.95);
+    }
+
+    .chain-showcase {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      gap: 18px;
+    }
+
+    .meme-card {
+      border-radius: 24px;
+      padding: 22px;
+      background:
+        linear-gradient(135deg, rgba(116,255,159,0.09), rgba(99,170,255,0.07)),
+        rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .meme-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .meme-title h3 {
+      font-size: 22px;
+      letter-spacing: -0.02em;
+    }
+
+    .meme-title .tag {
+      font-size: 12px;
+      font-weight: 800;
+      color: #13210d;
+      background: linear-gradient(135deg, var(--green), #e8ff90);
+      padding: 8px 10px;
+      border-radius: 999px;
+    }
+
+    .meme-body {
+      display: grid;
+      gap: 12px;
+    }
+
+    .stat-box {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .stat-item {
+      border-radius: 18px;
+      padding: 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .stat-item .k {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .stat-item .v {
+      font-size: 18px;
+      font-weight: 900;
+      color: #fff;
+    }
+
+    .action-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .wallet-panel {
+      border-radius: 24px;
+      padding: 22px;
+      background: rgba(255,255,255,0.045);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .wallet-panel h4 {
+      font-size: 16px;
+      margin-bottom: 14px;
+    }
+
+    .wallet-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .wallet-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(7, 17, 31, 0.5);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .wallet-row .label {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .wallet-row .value {
+      font-size: 14px;
+      font-weight: 800;
+      color: #fff;
+      word-break: break-all;
+      text-align: right;
+    }
+
+    /* Cards */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 34px;
+    }
+
+    .feature-card,
+    .step-card,
+    .link-card,
+    .faq-item {
+      border-radius: 24px;
+      padding: 24px;
+      background: var(--panel-2);
+      border: 1px solid rgba(255,255,255,0.07);
+      box-shadow: var(--shadow);
+    }
+
+    .feature-icon,
+    .step-number {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+      font-weight: 900;
+      margin-bottom: 18px;
+      background: linear-gradient(135deg, rgba(116,255,159,0.2), rgba(99,170,255,0.24));
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .feature-card h3,
+    .step-card h3,
+    .link-card h3 {
+      font-size: 22px;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .feature-card p,
+    .step-card p,
+    .link-card p,
+    .faq-item p {
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 15px;
+    }
+
+    .steps-grid,
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 34px;
+    }
+
+    .link-card .mini-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .faq-grid {
+      display: grid;
+      gap: 16px;
+      margin-top: 34px;
+    }
+
+    .faq-item h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .cta-box {
+      margin-top: 40px;
+      padding: 30px;
+      border-radius: 28px;
+      background:
+        linear-gradient(135deg, rgba(116,255,159,0.1), rgba(99,170,255,0.08)),
+        rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .cta-box h3 {
+      font-size: clamp(24px, 3vw, 34px);
+      margin-bottom: 8px;
+    }
+
+    .cta-box p {
+      color: var(--muted);
+      max-width: 760px;
+      line-height: 1.7;
+    }
+
+    footer {
+      padding: 36px 0 48px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      margin-top: 40px;
+    }
+
+    .footer-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer-note {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+      max-width: 760px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      color: #d8e8ff;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .status-bar {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 60;
+      max-width: 360px;
+      width: calc(100% - 36px);
+      border-radius: 18px;
+      padding: 14px 16px;
+      background: rgba(10, 23, 46, 0.94);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+      display: none;
+    }
+
+    .status-bar.show {
+      display: block;
+      animation: fadeUp 0.22s ease;
+    }
+
+    .status-bar.success { border-color: rgba(116,255,159,0.22); }
+    .status-bar.error { border-color: rgba(255,123,123,0.22); }
+
+    .status-title {
+      font-size: 14px;
+      font-weight: 900;
+      margin-bottom: 4px;
+    }
+
+    .status-text {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .grid-3,
+      .steps-grid,
+      .links-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .nav-links,
+      .nav-actions .btn-secondary,
+      .nav-actions .wallet-chip {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: inline-block;
+      }
+
+      .hero {
+        padding-top: 44px;
+      }
+
+      .hero-copy p {
+        font-size: 17px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(var(--max), calc(100% - 20px));
+      }
+
+      .section {
+        padding: 68px 0;
+      }
+
+      .hero-copy h1 {
+        font-size: 42px;
+      }
+
+      .hero-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .stat-box,
+      .action-row {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-card,
+      .step-card,
+      .link-card,
+      .faq-item,
+      .hero-card,
+      .cta-box {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="nav-wrap">
+        <a href="#top" class="brand">
+          <div class="brand-mark"></div>
+          <div class="brand-text">
+            <div class="brand-title">PEPU UNCHAINED</div>
+            <div class="brand-sub">Crypto gateway • premium meme UX</div>
+          </div>
+        </a>
+
+        <nav class="nav-links" aria-label="Navigazione principale">
+          <a href="#features">Features</a>
+          <a href="#how">Come funziona</a>
+          <a href="#access">Accesso rapido</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+
+        <div class="nav-actions">
+          <div class="wallet-chip" id="headerWalletChip">
+            <span class="mini-dot"></span>
+            <span id="headerWalletText">Wallet non connesso</span>
+          </div>
+          <a class="btn btn-secondary" href="#access">Apri strumenti</a>
+          <button class="btn btn-primary" id="connectWalletBtn">Connect Wallet</button>
+        </div>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Apri menu mobile">
+          <span></span>
+        </button>
+      </div>
+
+      <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-card">
+          <div class="mobile-links">
+            <a href="#features">Features</a>
+            <a href="#how">Come funziona</a>
+            <a href="#access">Accesso rapido</a>
+            <a href="#faq">FAQ</a>
+          </div>
+          <div class="mobile-actions">
+            <button class="btn btn-primary btn-full" id="connectWalletBtnMobile">Connect Wallet</button>
+            <a class="btn btn-secondary btn-full" href="#access">Vai agli strumenti</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="badge">
+              <span class="dot"></span>
+              Ecosistema crypto con stile premium
+            </div>
+
+            <h1>
+              Compra, esplora e connettiti a
+              <span class="glow">PEPU Unchained</span>
+              in modo semplice.
+            </h1>
+
+            <p>
+              Una landing page moderna per facilitare l’accesso all’ecosistema PEPU:
+              collega il wallet, apri bridge e DEX, consulta la guida e porta gli utenti
+              dentro un’esperienza crypto più pulita, più credibile e più veloce.
+            </p>
+
+            <div class="hero-actions">
+              <button class="btn btn-primary" id="connectWalletBtnHero">Connect Wallet</button>
+              <a class="btn btn-gold" href="#access">Buy / Bridge Now</a>
+              <a class="btn btn-secondary" href="#how">Scopri come funziona</a>
+            </div>
+
+            <div class="hero-metrics">
+              <div class="metric-pill">⚡ UX veloce</div>
+              <div class="metric-pill">🔐 Non-custodial</div>
+              <div class="metric-pill">🌉 Bridge ready</div>
+              <div class="metric-pill">💎 Meme + premium</div>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="hero-card">
+              <div class="hero-topbar">
+                <div class="tiny">Launch panel</div>
+                <div class="signal"><span></span> Wallet ready</div>
+              </div>
+
+              <div class="chain-showcase">
+                <div class="meme-card">
+                  <div class="meme-title">
+                    <h3>PEPU Access Hub</h3>
+                    <div class="tag">PREMIUM</div>
+                  </div>
+
+                  <div class="meme-body">
+                    <div class="stat-box">
+                      <div class="stat-item">
+                        <div class="k">Mode</div>
+                        <div class="v">Non-custodial</div>
+                      </div>
+                      <div class="stat-item">
+                        <div class="k">Flow</div>
+                        <div class="v">Bridge / Swap</div>
+                      </div>
+                      <div class="stat-item">
+                        <div class="k">Style</div>
+                        <div class="v">Meme Premium</div>
+                      </div>
+                    </div>
+
+                    <div class="action-row">
+                      <a class="btn btn-primary" href="#access">Apri accesso rapido</a>
+                      <button class="btn btn-secondary" id="addNetworkBtn">Aggiungi rete</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="wallet-panel">
+                  <h4>Wallet Status</h4>
+                  <div class="wallet-list">
+                    <div class="wallet-row">
+                      <div class="label">Account</div>
+                      <div class="value" id="walletAddress">Non connesso</div>
+                    </div>
+                    <div class="wallet-row">
+                      <div class="label">Chain ID</div>
+                      <div class="value" id="walletChain">—</div>
+                    </div>
+                    <div class="wallet-row">
+                      <div class="label">Saldo ETH</div>
+                      <div class="value" id="walletBalance">—</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="meme-card">
+                  <div class="meme-title">
+                    <h3>Fast Entry</h3>
+                    <div class="tag" style="background: linear-gradient(135deg, #ffd76f, #ffe79f); color:#352100;">HOT</div>
+                  </div>
+                  <div class="meme-body">
+                    <p style="color: var(--muted); line-height:1.7;">
+                      Porta gli utenti direttamente alle azioni che contano:
+                      bridge, documentazione, acquisto e strumenti rapidi,
+                      senza far sembrare il progetto improvvisato.
+                    </p>
+                    <div class="action-row">
+                      <a class="btn btn-gold" href="#access">Start now</a>
+                      <a class="btn btn-secondary" href="#faq">Leggi FAQ</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="container">
+        <h2 class="section-title">Una vetrina crypto che sembra davvero premium</h2>
+        <p class="section-subtitle">
+          Questa pagina è pensata per dare agli utenti una percezione più solida del progetto:
+          grafica curata, accesso wallet, call to action chiare e una struttura che può essere
+          espansa in una dApp completa.
+        </p>
+
+        <div class="grid-3">
+          <article class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Wallet Connect</h3>
+            <p>
+              Connessione diretta a wallet EVM tramite browser wallet come MetaMask,
+              con visualizzazione account, chain ID e saldo base.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">🌉</div>
+            <h3>Bridge & Buy Flow</h3>
+            <p>
+              Flusso semplice per portare l’utente verso bridge, acquisto o strumenti ufficiali
+              dell’ecosistema, mantenendo un’esperienza non-custodial.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">💎</div>
+            <h3>Meme / Premium Design</h3>
+            <p>
+              Estetica ispirata al mondo meme coin, ma ripulita per sembrare più affidabile,
+              più elegante e più adatta a un vero progetto pubblico.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how">
+      <div class="container">
+        <h2 class="section-title">Come funziona</h2>
+        <p class="section-subtitle">
+          Il flusso ideale è semplice: l’utente atterra sul sito, collega il wallet,
+          apre gli strumenti PEPU e completa il proprio percorso di accesso all’ecosistema.
+        </p>
+
+        <div class="steps-grid">
+          <article class="step-card">
+            <div class="step-number">1</div>
+            <h3>Connetti il wallet</h3>
+            <p>
+              L’utente collega il proprio wallet EVM direttamente dal browser e visualizza
+              account, chain ID e stato generale della sessione.
+            </p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-number">2</div>
+            <h3>Apri bridge o docs</h3>
+            <p>
+              Il sito può inviare l’utente al bridge, al DEX, alla documentazione o a una guida acquisto,
+              rendendo il percorso più chiaro e lineare.
+            </p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-number">3</div>
+            <h3>Espandi in una dApp</h3>
+            <p>
+              In una seconda fase puoi aggiungere quotazioni live, token balance, add network,
+              referral, analytics e componenti Web3 più avanzati.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="access">
+      <div class="container">
+        <h2 class="section-title">Accesso rapido</h2>
+        <p class="section-subtitle">
+          Qui puoi collegare i tuoi link ufficiali. Al momento trovi pulsanti demo pronti da sostituire
+          con gli URL definitivi del tuo progetto.
+        </p>
+
+        <div class="links-grid">
+          <article class="link-card">
+            <h3>Bridge</h3>
+            <p>
+              Collega qui il bridge ufficiale o la pagina di trasferimento asset tra Ethereum
+              e l’ecosistema PEPU.
+            </p>
+            <div class="mini-actions">
+              <a class="btn btn-primary" href="#" target="_blank" rel="noopener">Apri Bridge</a>
+            </div>
+          </article>
+
+          <article class="link-card">
+            <h3>DEX / Swap</h3>
+            <p>
+              Porta l’utente verso lo swap o il DEX dell’ecosistema per facilitare l’ingresso
+              e lo scambio dei token.
+            </p>
+            <div class="mini-actions">
+              <a class="btn btn-primary" href="#" target="_blank" rel="noopener">Apri DEX</a>
+            </div>
+          </article>
+
+          <article class="link-card">
+            <h3>Guida / Buy</h3>
+            <p>
+              Aggiungi una guida ufficiale, una pagina tutorial o un on-ramp esterno per
+              facilitare l’acquisto in modo più semplice.
+            </p>
+            <div class="mini-actions">
+              <a class="btn btn-gold" href="#" target="_blank" rel="noopener">Buy Now</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="cta-box">
+          <div>
+            <h3>Pronto per diventare una vera dApp Web3</h3>
+            <p>
+              Questa è una base professionale in solo HTML/CSS/JS. Puoi usarla subito come landing page,
+              oppure trasformarla nel prossimo step in un progetto Next.js con wallet libraries,
+              lettura token, dashboard e funzioni avanzate.
+            </p>
+          </div>
+          <button class="btn btn-primary" id="connectWalletBtnCta">Connect Wallet</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container">
+        <h2 class="section-title">FAQ</h2>
+        <p class="section-subtitle">
+          Domande utili da mostrare agli utenti per chiarire il funzionamento del sito.
+        </p>
+
+        <div class="faq-grid">
+          <article class="faq-item">
+            <h3>Il sito custodisce i fondi?</h3>
+            <p>
+              No. Questa struttura è pensata come interfaccia non-custodial: l’utente usa il proprio wallet
+              e conferma le operazioni dal proprio provider Web3.
+            </p>
+          </article>
+
+          <article class="faq-item">
+            <h3>Serve MetaMask?</h3>
+            <p>
+              Serve un wallet EVM compatibile con `window.ethereum`, come MetaMask o altri browser wallet simili.
+            </p>
+          </article>
+
+          <article class="faq-item">
+            <h3>Posso aggiungere la rete PEPU?</h3>
+            <p>
+              Sì. Il pulsante è già predisposto. Devi solo inserire i parametri ufficiali della rete
+              dentro lo script prima della pubblicazione.
+            </p>
+          </article>
+
+          <article class="faq-item">
+            <h3>Si può collegare un acquisto con carta?</h3>
+            <p>
+              Sì, ma di solito conviene usare partner esterni di fiat on-ramp. Questo riduce complessità tecnica,
+              legale e operativa rispetto a una piattaforma custodial.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-wrap">
+        <div class="footer-note">
+          Questo template è una base frontend. Prima di andare online, aggiungi i link ufficiali,
+          i parametri della rete PEPU e i disclaimer legali relativi ai servizi crypto mostrati sul sito.
+        </div>
+
+        <div class="footer-links">
+          <a href="#top">Top</a>
+          <a href="#features">Features</a>
+          <a href="#how">Come funziona</a>
+          <a href="#faq">FAQ</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="status-bar" id="statusBar">
+    <div class="status-title" id="statusTitle">Notifica</div>
+    <div class="status-text" id="statusText"></div>
+  </div>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const mobileLinks = document.querySelectorAll(".mobile-links a");
+
+    const connectButtons = [
+      document.getElementById("connectWalletBtn"),
+      document.getElementById("connectWalletBtnMobile"),
+      document.getElementById("connectWalletBtnHero"),
+      document.getElementById("connectWalletBtnCta")
+    ].filter(Boolean);
+
+    const addNetworkBtn = document.getElementById("addNetworkBtn");
+    const headerWalletText = document.getElementById("headerWalletText");
+    const walletAddress = document.getElementById("walletAddress");
+    const walletChain = document.getElementById("walletChain");
+    const walletBalance = document.getElementById("walletBalance");
+
+    const statusBar = document.getElementById("statusBar");
+    const statusTitle = document.getElementById("statusTitle");
+    const statusText = document.getElementById("statusText");
+
+    const PEPU_NETWORK = {
+      chainIdHex: "", // es: "0x1234"
+      chainName: "Pepe Unchained",
+      rpcUrls: [],
+      blockExplorerUrls: [],
+      nativeCurrency: {
+        name: "ETH",
+        symbol: "ETH",
+        decimals: 18
+      }
+    };
+
+    function toggleMenu(forceClose = false) {
+      const shouldOpen = forceClose ? false : !mobileMenu.classList.contains("open");
+      mobileMenu.classList.toggle("open", shouldOpen);
+      menuToggle.classList.toggle("active", shouldOpen);
+    }
+
+    menuToggle?.addEventListener("click", () => toggleMenu());
+
+    mobileLinks.forEach(link => {
+      link.addEventListener("click", () => toggleMenu(true));
+    });
+
+    function shortAddress(address) {
+      if (!address) return "Non connesso";
+      return `${address.slice(0, 6)}...${address.slice(-4)}`;
+    }
+
+    function showStatus(title, message, type = "success") {
+      statusTitle.textContent = title;
+      statusText.textContent = message;
+      statusBar.className = `status-bar show ${type}`;
+      clearTimeout(showStatus._timer);
+      showStatus._timer = setTimeout(() => {
+        statusBar.className = "status-bar";
+      }, 3600);
+    }
+
+    function setWalletDisconnected() {
+      headerWalletText.textContent = "Wallet non connesso";
+      walletAddress.textContent = "Non connesso";
+      walletChain.textContent = "—";
+      walletBalance.textContent = "—";
+    }
+
+    async function fetchBalance(account) {
+      if (!window.ethereum || !account) return;
+      try {
+        const balanceHex = await window.ethereum.request({
+          method: "eth_getBalance",
+          params: [account, "latest"]
+        });
+
+        const wei = BigInt(balanceHex);
+        const eth = Number(wei) / 1e18;
+        walletBalance.textContent = `${eth.toFixed(4)} ETH`;
+      } catch (error) {
+        walletBalance.textContent = "Errore lettura";
+      }
+    }
+
+    async function refreshWalletUI() {
+      if (!window.ethereum) {
+        setWalletDisconnected();
+        return;
+      }
+
+      try {
+        const accounts = await window.ethereum.request({ method: "eth_accounts" });
+        const chainId = await window.ethereum.request({ method: "eth_chainId" });
+
+        if (!accounts || !accounts.length) {
+          setWalletDisconnected();
+          return;
+        }
+
+        const account = accounts[0];
+        headerWalletText.textContent = shortAddress(account);
+        walletAddress.textContent = account;
+        walletChain.textContent = `${chainId} (${parseInt(chainId, 16)})`;
+
+        await fetchBalance(account);
+      } catch (error) {
+        setWalletDisconnected();
+      }
+    }
+
+    async function connectWallet() {
+      if (!window.ethereum) {
+        showStatus(
+          "Wallet non trovato",
+          "Installa MetaMask o un wallet EVM compatibile per connetterti.",
+          "error"
+        );
+        return;
+      }
+
+      try {
+        const accounts = await window.ethereum.request({
+          method: "eth_requestAccounts"
+        });
+
+        const chainId = await window.ethereum.request({ method: "eth_chainId" });
+        const account = accounts[0];
+
+        headerWalletText.textContent = shortAddress(account);
+        walletAddress.textContent = account;
+        walletChain.textContent = `${chainId} (${parseInt(chainId, 16)})`;
+
+        await fetchBalance(account);
+
+        showStatus(
+          "Wallet connesso",
+          `Connessione riuscita con account ${shortAddress(account)}.`,
+          "success"
+        );
+
+        toggleMenu(true);
+      } catch (error) {
+        showStatus(
+          "Connessione annullata",
+          "L'utente ha annullato o il wallet ha restituito un errore.",
+          "error"
+        );
+      }
+    }
+
+    async function addPepuNetwork() {
+      if (!window.ethereum) {
+        showStatus(
+          "Wallet richiesto",
+          "Per aggiungere la rete serve un wallet browser come MetaMask.",
+          "error"
+        );
+        return;
+      }
+
+      if (
+        !PEPU_NETWORK.chainIdHex ||
+        !PEPU_NETWORK.rpcUrls.length ||
+        !PEPU_NETWORK.blockExplorerUrls.length
+      ) {
+        showStatus(
+          "Parametri rete mancanti",
+          "Inserisci chainId, RPC e block explorer ufficiali di PEPU nello script prima di usare questo pulsante.",
+          "error"
+        );
+        return;
+      }
+
+      try {
+        await window.ethereum.request({
+          method: "wallet_addEthereumChain",
+          params: [{
+            chainId: PEPU_NETWORK.chainIdHex,
+            chainName: PEPU_NETWORK.chainName,
+            rpcUrls: PEPU_NETWORK.rpcUrls,
+            blockExplorerUrls: PEPU_NETWORK.blockExplorerUrls,
+            nativeCurrency: PEPU_NETWORK.nativeCurrency
+          }]
+        });
+
+        showStatus(
+          "Rete aggiunta",
+          "La rete PEPU è stata proposta al wallet con successo.",
+          "success"
+        );
+      } catch (error) {
+        showStatus(
+          "Operazione non completata",
+          "Il wallet ha annullato o rifiutato l'aggiunta della rete.",
+          "error"
+        );
+      }
+    }
+
+    connectButtons.forEach(btn => btn.addEventListener("click", connectWallet));
+    addNetworkBtn?.addEventListener("click", addPepuNetwork);
+
+    if (window.ethereum) {
+      refreshWalletUI();
+
+      window.ethereum.on?.("accountsChanged", () => {
+        refreshWalletUI();
+      });
+
+      window.ethereum.on?.("chainChanged", () => {
+        refreshWalletUI();
+      });
+    } else {
+      setWalletDisconnected();
+    }
+  </script>
+</body>
+</html>
