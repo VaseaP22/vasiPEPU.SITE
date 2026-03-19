@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PEPU Unchained | Premium Meme Crypto Gateway</title>
+  <title>VP.FCB.DCV.MGC</title>
   <meta
     name="description"
-    content="PEPU Unchained premium crypto landing page con wallet connect, glow animations, tokenomics e link ufficiali PEPU."
+    content="Landing page premium PEPU Unchained con wallet connect, add network, switch network, add token, tokenomics e link ufficiali."
   />
   <style>
     :root {
@@ -30,6 +30,7 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
+
     body {
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
@@ -110,14 +111,6 @@
       max-width: 820px;
     }
 
-    .glass {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      box-shadow: var(--shadow);
-    }
-
     .btn {
       display: inline-flex;
       align-items: center;
@@ -191,7 +184,6 @@
       box-shadow: 0 0 14px rgba(125,255,159,0.95);
     }
 
-    /* Header */
     .site-header {
       position: sticky;
       top: 0;
@@ -243,7 +235,7 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 26px;
+      gap: 24px;
     }
 
     .nav-links a {
@@ -310,7 +302,6 @@
     .menu-toggle span { top: 23px; }
     .menu-toggle::before { top: 16px; }
     .menu-toggle::after { top: 30px; }
-
     .menu-toggle.active span { opacity: 0; }
     .menu-toggle.active::before { transform: rotate(45deg); top: 23px; }
     .menu-toggle.active::after { transform: rotate(-45deg); top: 23px; }
@@ -344,7 +335,6 @@
 
     .mobile-actions { display: grid; gap: 10px; }
 
-    /* Hero */
     .hero {
       position: relative;
       padding: 68px 0 56px;
@@ -418,7 +408,7 @@
       box-shadow: var(--shadow);
       position: relative;
       overflow: hidden;
-      min-height: 580px;
+      min-height: 640px;
     }
 
     .hero-card::before,
@@ -494,6 +484,7 @@
       gap: 18px;
     }
 
+    .card,
     .meme-card,
     .wallet-panel,
     .token-contract,
@@ -501,8 +492,7 @@
     .step-card,
     .link-card,
     .faq-item,
-    .token-card,
-    .community-card {
+    .token-card {
       border-radius: 24px;
       padding: 24px;
       background: var(--panel-2);
@@ -568,12 +558,17 @@
       color: #fff;
     }
 
-    .action-row {
+    .action-row,
+    .action-grid-2,
+    .action-grid-3 {
       display: grid;
-      grid-template-columns: 1fr 1fr;
       gap: 12px;
       margin-top: 14px;
     }
+
+    .action-row,
+    .action-grid-2 { grid-template-columns: 1fr 1fr; }
+    .action-grid-3 { grid-template-columns: repeat(3, 1fr); }
 
     .wallet-panel h4,
     .token-contract h4 { font-size: 16px; margin-bottom: 14px; }
@@ -624,11 +619,6 @@
       font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     }
 
-    .copy-btn {
-      flex-shrink: 0;
-      min-width: 90px;
-    }
-
     .grid-3,
     .steps-grid,
     .links-grid,
@@ -640,7 +630,14 @@
 
     .grid-3,
     .steps-grid,
-    .links-grid { grid-template-columns: repeat(3, 1fr); }
+    .links-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .tokenomics-grid {
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: start;
+    }
 
     .feature-icon,
     .step-number {
@@ -660,7 +657,6 @@
     .step-card h3,
     .link-card h3,
     .token-card h3,
-    .community-card h3,
     .faq-item h3 {
       font-size: 22px;
       margin-bottom: 12px;
@@ -671,24 +667,10 @@
     .step-card p,
     .link-card p,
     .token-card p,
-    .community-card p,
     .faq-item p {
       color: var(--muted);
       line-height: 1.75;
       font-size: 15px;
-    }
-
-    .link-card .mini-actions,
-    .community-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 18px;
-    }
-
-    .tokenomics-grid {
-      grid-template-columns: 1.05fr 0.95fr;
-      align-items: start;
     }
 
     .supply-card {
@@ -828,7 +810,7 @@
       right: 18px;
       bottom: 18px;
       z-index: 60;
-      max-width: 360px;
+      max-width: 380px;
       width: calc(100% - 36px);
       border-radius: 18px;
       padding: 14px 16px;
@@ -864,6 +846,7 @@
       }
 
       .hero-card { min-height: auto; }
+      .action-grid-3 { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 900px) {
@@ -882,10 +865,14 @@
       .container { width: min(var(--max), calc(100% - 20px)); }
       .section { padding: 68px 0; }
       .hero-copy h1 { font-size: 42px; }
-      .hero-actions { display: grid; grid-template-columns: 1fr; }
+      .hero-actions,
+      .action-row,
+      .action-grid-2 {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
       .btn { width: 100%; }
-      .stat-box,
-      .action-row { grid-template-columns: 1fr; }
+      .stat-box { grid-template-columns: 1fr; }
       .feature-card,
       .step-card,
       .link-card,
@@ -895,7 +882,7 @@
       .meme-card,
       .wallet-panel,
       .token-contract,
-      .community-card,
+      .card,
       .supply-card {
         padding: 20px;
       }
@@ -935,16 +922,16 @@
             </svg>
           </div>
           <div>
-            <div class="brand-title">PEPU UNCHAINED</div>
+            <div class="brand-title">VP.FCB.DCV.MGC</div>
             <div class="brand-sub">premium meme crypto gateway</div>
           </div>
         </a>
 
         <nav class="nav-links" aria-label="Navigazione principale">
           <a href="#features">Features</a>
-          <a href="#how">Come funziona</a>
+          <a href="#tools">Tools</a>
           <a href="#tokenomics">Tokenomics</a>
-          <a href="#access">Link ufficiali</a>
+          <a href="#links">Official Links</a>
           <a href="#faq">FAQ</a>
         </nav>
 
@@ -953,7 +940,7 @@
             <span class="mini-dot"></span>
             <span id="headerWalletText">Wallet non connesso</span>
           </div>
-          <a class="btn btn-secondary" href="#access">Apri strumenti</a>
+          <a class="btn btn-secondary" href="#tools">Apri tools</a>
           <button class="btn btn-primary" id="connectWalletBtn">Connect Wallet</button>
         </div>
 
@@ -966,14 +953,14 @@
         <div class="mobile-menu-card">
           <div class="mobile-links">
             <a href="#features">Features</a>
-            <a href="#how">Come funziona</a>
+            <a href="#tools">Tools</a>
             <a href="#tokenomics">Tokenomics</a>
-            <a href="#access">Link ufficiali</a>
+            <a href="#links">Official Links</a>
             <a href="#faq">FAQ</a>
           </div>
           <div class="mobile-actions">
             <button class="btn btn-primary btn-full" id="connectWalletBtnMobile">Connect Wallet</button>
-            <a class="btn btn-secondary btn-full" href="#access">Vai agli strumenti</a>
+            <a class="btn btn-secondary btn-full" href="#tools">Vai ai tools</a>
           </div>
         </div>
       </div>
@@ -987,32 +974,31 @@
           <div class="hero-copy">
             <div class="badge">
               <span class="dot"></span>
-              Layer 2 meme ecosystem • premium entry
+              Pepe Unchained V2
             </div>
 
             <h1>
-              Porta gli utenti dentro
+              Collega, aggiungi e usa
               <span class="glow-text">PEPU Unchained</span>
-              con uno stile davvero premium.
+              con pulsanti già funzionanti.
             </h1>
 
             <p>
-              Una landing page professionale per facilitare l’accesso all’ecosistema PEPU:
-              collega il wallet, apri bridge e swap, consulta la guida ufficiale e mostra
-              la tokenomics in modo chiaro e moderno.
+              Pagina premium con wallet connect, add network, switch network, add token,
+              copy contract e collegamenti ufficiali a bridge, swap, docs ed explorer.
             </p>
 
             <div class="hero-actions">
               <button class="btn btn-primary" id="connectWalletBtnHero">Connect Wallet</button>
-              <a class="btn btn-gold" href="https://guide.pepeunchained.com/pepu-guide/how-to-use-and-buy-usdpepu-step-by-step-for-beginners" target="_blank" rel="noopener">Buy Guide</a>
-              <a class="btn btn-secondary" href="https://pepubridge.com/" target="_blank" rel="noopener">Apri Bridge</a>
+              <button class="btn btn-gold" id="addNetworkBtnHero">Add PEPU Network</button>
+              <button class="btn btn-secondary" id="switchNetworkBtnHero">Switch to PEPU</button>
             </div>
 
             <div class="hero-metrics">
-              <div class="metric-pill">⚡ Fast Layer 2</div>
-              <div class="metric-pill">🔐 Non-custodial</div>
+              <div class="metric-pill">⚡ Chain ID 97741</div>
               <div class="metric-pill">🌉 Official Bridge</div>
-              <div class="metric-pill">💎 Meme + premium</div>
+              <div class="metric-pill">🔐 Wallet Ready</div>
+              <div class="metric-pill">💎 Premium UI</div>
             </div>
           </div>
 
@@ -1020,34 +1006,35 @@
             <div class="hero-card">
               <div class="hero-topbar">
                 <div class="tiny">Access panel</div>
-                <div class="signal"><span></span> Wallet ready</div>
+                <div class="signal"><span></span> Web3 ready</div>
               </div>
 
               <div class="chain-showcase">
                 <div class="meme-card">
                   <div class="meme-title">
-                    <h3>PEPU Launch Hub</h3>
-                    <div class="tag">LIVE LINKS</div>
+                    <h3>PEPU V2 Network</h3>
+                    <div class="tag">OFFICIAL</div>
                   </div>
 
                   <div class="stat-box">
                     <div class="stat-item">
-                      <div class="k">Website</div>
-                      <div class="v">Official</div>
+                      <div class="k">Chain ID</div>
+                      <div class="v">97741</div>
                     </div>
                     <div class="stat-item">
-                      <div class="k">DEX</div>
-                      <div class="v">PepuSwap</div>
+                      <div class="k">Symbol</div>
+                      <div class="v">PEPU</div>
                     </div>
                     <div class="stat-item">
-                      <div class="k">Bridge</div>
-                      <div class="v">V2 Bridge</div>
+                      <div class="k">Network</div>
+                      <div class="v">V2 Mainnet</div>
                     </div>
                   </div>
 
-                  <div class="action-row">
-                    <a class="btn btn-primary" href="https://pepuswap.com/" target="_blank" rel="noopener">Open PepuSwap</a>
-                    <a class="btn btn-secondary" href="https://pepuscan.com/" target="_blank" rel="noopener">Open Explorer</a>
+                  <div class="action-grid-3">
+                    <button class="btn btn-primary" id="addNetworkBtnPanel">Add Network</button>
+                    <button class="btn btn-secondary" id="switchNetworkBtnPanel">Switch Network</button>
+                    <a class="btn btn-gold" href="https://pepubridge.com/" target="_blank" rel="noopener">Open Bridge</a>
                   </div>
                 </div>
 
@@ -1063,114 +1050,118 @@
                       <div class="value" id="walletChain">—</div>
                     </div>
                     <div class="wallet-row">
-                      <div class="label">Saldo ETH</div>
+                      <div class="label">Saldo Native</div>
                       <div class="value" id="walletBalance">—</div>
                     </div>
                   </div>
                 </div>
 
                 <div class="token-contract">
-                  <h4>$PEPU Contract (Ethereum)</h4>
+                  <h4>$PEPU Contract su Ethereum</h4>
                   <div class="contract-box">
                     <code id="tokenContract">0x93aA0ccD1e5628d3A841C4DbdF602D9eb04085d6</code>
-                    <button class="btn btn-secondary copy-btn" id="copyContractBtn">Copia</button>
+                    <button class="btn btn-secondary" id="copyContractBtn">Copia</button>
+                  </div>
+
+                  <div class="action-row">
+                    <button class="btn btn-primary" id="addTokenBtn">Add $PEPU to Wallet</button>
+                    <a class="btn btn-secondary" href="https://guide.pepeunchained.com/pepu-guide/how-to-use-and-buy-usdpepu-step-by-step-for-beginners" target="_blank" rel="noopener">Buy Guide</a>
                   </div>
                 </div>
 
                 <div class="meme-card">
                   <div class="meme-title">
                     <h3>Fast Entry</h3>
-                    <div class="tag gold">HOT</div>
+                    <div class="tag gold">LIVE</div>
                   </div>
                   <p style="color: var(--muted); line-height: 1.75;">
-                    Accesso rapido ai link ufficiali PEPU: website, docs, bridge, PepuSwap,
-                    PepuScan, PumpPad e guida buy per creare un funnel semplice e credibile.
+                    Tutti i pulsanti sotto sono già collegati ai riferimenti ufficiali
+                    dell’ecosistema PEPU.
                   </p>
-                  <div class="action-row">
-                    <a class="btn btn-gold" href="#access">Official Links</a>
-                    <a class="btn btn-secondary" href="#tokenomics">View Tokenomics</a>
+                  <div class="action-grid-3">
+                    <a class="btn btn-primary" href="https://pepuswap.com/" target="_blank" rel="noopener">PepuSwap</a>
+                    <a class="btn btn-secondary" href="https://pepuscan.com/" target="_blank" rel="noopener">PepuScan</a>
+                    <a class="btn btn-gold" href="https://analytics.pepuswap.com/" target="_blank" rel="noopener">Analytics</a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
 
     <section class="section" id="features">
       <div class="container">
-        <h2 class="section-title">Una vetrina crypto che sembra solida</h2>
+        <h2 class="section-title">Funzioni già operative</h2>
         <p class="section-subtitle">
-          Questa pagina è pensata per trasformare un semplice sito promo in un access point
-          credibile verso l’ecosistema PEPU, con stile “meme/crypto premium” ma senza sembrare amatoriale.
+          Questa pagina include azioni Web3 reali che funzionano in MetaMask
+          e in wallet EVM compatibili.
         </p>
 
         <div class="grid-3">
           <article class="feature-card">
-            <div class="feature-icon">⚡</div>
-            <h3>Wallet Connect</h3>
+            <div class="feature-icon">🔗</div>
+            <h3>Connect Wallet</h3>
             <p>
-              Connessione diretta a wallet EVM tramite browser wallet come MetaMask,
-              con visualizzazione account, chain ID e saldo base.
+              Connessione diretta al wallet browser, con aggiornamento automatico di account,
+              chain ID e saldo.
             </p>
           </article>
 
           <article class="feature-card">
-            <div class="feature-icon">🌉</div>
-            <h3>Official Access Flow</h3>
+            <div class="feature-icon">🧩</div>
+            <h3>Add & Switch Network</h3>
             <p>
-              Pulsanti già collegati ai link ufficiali PEPU per bridge, swap, docs,
-              guide e block explorer.
+              Inserisce la rete ufficiale PEPU Unchained V2 nel wallet e prova anche lo switch
+              automatico sulla chain corretta.
             </p>
           </article>
 
           <article class="feature-card">
-            <div class="feature-icon">💎</div>
-            <h3>Glow Premium UI</h3>
+            <div class="feature-icon">🪙</div>
+            <h3>Add Token</h3>
             <p>
-              Effetti glow, gradienti, SVG brand mark e layout responsive per dare al progetto
-              una presenza più forte online.
+              Aggiunge il token Ethereum $PEPU al wallet tramite <code>wallet_watchAsset</code>.
             </p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="how">
+    <section class="section" id="tools">
       <div class="container">
-        <h2 class="section-title">Come funziona</h2>
+        <h2 class="section-title">Wallet Tools</h2>
         <p class="section-subtitle">
-          Il flusso ideale è semplice: connetti wallet, manda l’utente agli strumenti ufficiali,
-          poi espandi la base in una dApp completa.
+          Tool utili per onboarding rapido degli utenti direttamente dalla landing page.
         </p>
 
-        <div class="steps-grid">
-          <article class="step-card">
-            <div class="step-number">1</div>
-            <h3>Connetti il wallet</h3>
-            <p>
-              Il visitatore collega il proprio wallet EVM dal browser e vede subito stato wallet,
-              chain ID e saldo base.
-            </p>
+        <div class="grid-3">
+          <article class="card">
+            <h3 style="margin-bottom:16px;">Wallet Actions</h3>
+            <div class="action-grid-3">
+              <button class="btn btn-primary" id="connectWalletBtnTools">Connect Wallet</button>
+              <button class="btn btn-secondary" id="addNetworkBtnTools">Add Network</button>
+              <button class="btn btn-gold" id="switchNetworkBtnTools">Switch Network</button>
+            </div>
           </article>
 
-          <article class="step-card">
-            <div class="step-number">2</div>
-            <h3>Apri Bridge / Swap / Guide</h3>
-            <p>
-              Il sito reindirizza verso strumenti ufficiali PEPU e semplifica il percorso
-              verso bridge, swap, docs e guida acquisto.
-            </p>
+          <article class="card">
+            <h3 style="margin-bottom:16px;">Token Actions</h3>
+            <div class="action-grid-2">
+              <button class="btn btn-primary" id="addTokenBtnTools">Add $PEPU Token</button>
+              <button class="btn btn-secondary" id="copyContractBtnTools">Copy Contract</button>
+            </div>
           </article>
 
-          <article class="step-card">
-            <div class="step-number">3</div>
-            <h3>Espandi in una dApp</h3>
-            <p>
-              Nel passo successivo puoi aggiungere analytics, referral, token balances,
-              add network, dashboard e componenti Web3 avanzati.
-            </p>
+          <article class="card">
+            <h3 style="margin-bottom:16px;">Quick Access</h3>
+            <div class="action-grid-3">
+              <a class="btn btn-primary" href="https://pepubridge.com/" target="_blank" rel="noopener">Bridge</a>
+              <a class="btn btn-secondary" href="https://pepuswap.com/" target="_blank" rel="noopener">Swap</a>
+              <a class="btn btn-gold" href="https://pepuscan.com/" target="_blank" rel="noopener">Explorer</a>
+            </div>
           </article>
         </div>
       </div>
@@ -1180,7 +1171,7 @@
       <div class="container">
         <h2 class="section-title">Tokenomics</h2>
         <p class="section-subtitle">
-          Sezione pronta da mostrare nella landing. I valori sotto seguono il whitepaper pubblico di PEPU.
+          Sezione pronta da mostrare nella landing.
         </p>
 
         <div class="tokenomics-grid">
@@ -1188,154 +1179,149 @@
             <div class="supply-label">Total Supply</div>
             <div class="supply-value">16,000,000,000 PEPU</div>
             <p style="color: var(--muted); line-height: 1.75;">
-              Una presentazione visiva chiara della supply aiuta a rendere la landing più completa
-              e più credibile per chi entra nel progetto.
+              La tokenomics pubblica presenta una supply totale di 16 miliardi di PEPU.
             </p>
 
             <div class="allocations">
               <div class="allocation">
-                <div class="allocation-top">
-                  <span>Community Rewards</span>
-                  <span>50%</span>
-                </div>
+                <div class="allocation-top"><span>Community Rewards</span><span>50%</span></div>
                 <div class="bar"><span style="width: 50%;"></span></div>
               </div>
-
               <div class="allocation">
-                <div class="allocation-top">
-                  <span>Presale</span>
-                  <span>20%</span>
-                </div>
+                <div class="allocation-top"><span>Presale</span><span>20%</span></div>
                 <div class="bar"><span style="width: 20%;"></span></div>
               </div>
-
               <div class="allocation">
-                <div class="allocation-top">
-                  <span>Marketing</span>
-                  <span>10%</span>
-                </div>
+                <div class="allocation-top"><span>Marketing</span><span>10%</span></div>
                 <div class="bar"><span style="width: 10%;"></span></div>
               </div>
-
               <div class="allocation">
-                <div class="allocation-top">
-                  <span>Liquidity</span>
-                  <span>10%</span>
-                </div>
+                <div class="allocation-top"><span>Liquidity</span><span>10%</span></div>
                 <div class="bar"><span style="width: 10%;"></span></div>
               </div>
-
               <div class="allocation">
-                <div class="allocation-top">
-                  <span>Project Finance</span>
-                  <span>5%</span>
-                </div>
+                <div class="allocation-top"><span>Project Finance</span><span>5%</span></div>
                 <div class="bar"><span style="width: 5%;"></span></div>
               </div>
-
               <div class="allocation">
-                <div class="allocation-top">
-                  <span>Chain Inventory</span>
-                  <span>5%</span>
-                </div>
+                <div class="allocation-top"><span>Chain Inventory</span><span>5%</span></div>
                 <div class="bar"><span style="width: 5%;"></span></div>
               </div>
             </div>
           </div>
 
-          <div class="community-card">
-            <h3>Token Overview</h3>
+          <div class="token-card">
+            <h3>Network Summary</h3>
             <p>
-              Usa questa sezione per spiegare subito a chi arriva sul sito dove leggere la documentazione,
-              come comprare il token e dove verificare transazioni e attività on-chain.
+              Parametri di rete pronti per configurare il wallet.
             </p>
 
-            <div class="community-actions">
-              <a class="btn btn-primary" href="https://guide.pepeunchained.com/" target="_blank" rel="noopener">Open Docs</a>
-              <a class="btn btn-secondary" href="https://pepuscan.com/" target="_blank" rel="noopener">Open PepuScan</a>
+            <div style="height:18px;"></div>
+
+            <div class="wallet-list">
+              <div class="wallet-row">
+                <div class="label">Network Name</div>
+                <div class="value">Pepe Unchained V2</div>
+              </div>
+              <div class="wallet-row">
+                <div class="label">RPC URL</div>
+                <div class="value">rpc-pepu-v2-mainnet-0.t.conduit.xyz</div>
+              </div>
+              <div class="wallet-row">
+                <div class="label">Chain ID</div>
+                <div class="value">97741</div>
+              </div>
+              <div class="wallet-row">
+                <div class="label">Currency Symbol</div>
+                <div class="value">PEPU</div>
+              </div>
             </div>
 
-            <div style="height: 18px;"></div>
-
-            <h3>Useful links</h3>
-            <p>
-              Inseriti direttamente nel codice: website, bridge, PepuSwap, explorer, PumpPad
-              e guida ufficiale all’acquisto di PEPU.
-            </p>
-
-            <div class="community-actions">
-              <a class="btn btn-gold" href="https://pepeunchained.com/" target="_blank" rel="noopener">Website</a>
-              <a class="btn btn-secondary" href="https://guide.pepeunchained.com/pepu-guide/how-to-use-and-buy-usdpepu-step-by-step-for-beginners" target="_blank" rel="noopener">Buy Guide</a>
+            <div class="action-row">
+              <button class="btn btn-primary" id="addNetworkBtnTokenomics">Add Network</button>
+              <button class="btn btn-secondary" id="switchNetworkBtnTokenomics">Switch Network</button>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="access">
+    <section class="section" id="links">
       <div class="container">
-        <h2 class="section-title">Link ufficiali già inseriti</h2>
+        <h2 class="section-title">Link ufficiali PEPU</h2>
         <p class="section-subtitle">
-          Questi pulsanti sono già collegati ai principali riferimenti pubblici dell’ecosistema PEPU.
+          Pulsanti collegati ai principali strumenti pubblici dell’ecosistema.
         </p>
 
         <div class="links-grid">
           <article class="link-card">
+            <h3>Website</h3>
+            <p>Sito ufficiale Pepe Unchained.</p>
+            <div class="action-row">
+              <a class="btn btn-primary" href="https://pepeunchained.com/" target="_blank" rel="noopener">Open Website</a>
+            </div>
+          </article>
+
+          <article class="link-card">
             <h3>Bridge</h3>
-            <p>
-              Accesso diretto al bridge ufficiale per trasferire asset verso Pepe Unchained.
-            </p>
-            <div class="mini-actions">
-              <a class="btn btn-primary" href="https://pepubridge.com/" target="_blank" rel="noopener">Apri Bridge</a>
+            <p>Bridge ufficiale per trasferire asset verso PEPU.</p>
+            <div class="action-row">
+              <a class="btn btn-primary" href="https://pepubridge.com/" target="_blank" rel="noopener">Open Bridge</a>
             </div>
           </article>
 
           <article class="link-card">
             <h3>PepuSwap</h3>
-            <p>
-              Collegamento diretto allo swap / DEX dell’ecosistema PEPU.
-            </p>
-            <div class="mini-actions">
-              <a class="btn btn-primary" href="https://pepuswap.com/" target="_blank" rel="noopener">Apri PepuSwap</a>
+            <p>DEX nativo dell’ecosistema PEPU.</p>
+            <div class="action-row">
+              <a class="btn btn-primary" href="https://pepuswap.com/" target="_blank" rel="noopener">Open Swap</a>
             </div>
           </article>
 
           <article class="link-card">
             <h3>PepuScan</h3>
-            <p>
-              Block explorer per verificare transazioni, wallet e attività on-chain.
-            </p>
-            <div class="mini-actions">
-              <a class="btn btn-secondary" href="https://pepuscan.com/" target="_blank" rel="noopener">Apri Explorer</a>
+            <p>Explorer pubblico per transazioni e wallet.</p>
+            <div class="action-row">
+              <a class="btn btn-secondary" href="https://pepuscan.com/" target="_blank" rel="noopener">Open PepuScan</a>
             </div>
           </article>
 
           <article class="link-card">
-            <h3>Official Docs</h3>
-            <p>
-              Documentazione ufficiale con ecosistema, bridge, DEX, guide e risorse per sviluppatori.
-            </p>
-            <div class="mini-actions">
-              <a class="btn btn-primary" href="https://guide.pepeunchained.com/" target="_blank" rel="noopener">Apri Docs</a>
+            <h3>Explorer RPC Chain</h3>
+            <p>Explorer della rete V2.</p>
+            <div class="action-row">
+              <a class="btn btn-secondary" href="https://explorer-pepu-v2-mainnet-0.t.conduit.xyz" target="_blank" rel="noopener">Open V2 Explorer</a>
+            </div>
+          </article>
+
+          <article class="link-card">
+            <h3>Docs</h3>
+            <p>Documentazione ufficiale per utenti e sviluppatori.</p>
+            <div class="action-row">
+              <a class="btn btn-primary" href="https://guide.pepeunchained.com/" target="_blank" rel="noopener">Open Docs</a>
             </div>
           </article>
 
           <article class="link-card">
             <h3>Buy Guide</h3>
-            <p>
-              Guida ufficiale step-by-step per comprare e usare $PEPU.
-            </p>
-            <div class="mini-actions">
+            <p>Guida ufficiale per comprare $PEPU.</p>
+            <div class="action-row">
               <a class="btn btn-gold" href="https://guide.pepeunchained.com/pepu-guide/how-to-use-and-buy-usdpepu-step-by-step-for-beginners" target="_blank" rel="noopener">Open Guide</a>
             </div>
           </article>
 
           <article class="link-card">
+            <h3>Analytics</h3>
+            <p>Analytics DEX pubblico.</p>
+            <div class="action-row">
+              <a class="btn btn-gold" href="https://analytics.pepuswap.com/" target="_blank" rel="noopener">Open Analytics</a>
+            </div>
+          </article>
+
+          <article class="link-card">
             <h3>PumpPad</h3>
-            <p>
-              Accesso rapido al launchpad collegato all’ecosistema PEPU.
-            </p>
-            <div class="mini-actions">
+            <p>Launchpad collegato all’ecosistema.</p>
+            <div class="action-row">
               <a class="btn btn-secondary" href="https://pumppad.gg/" target="_blank" rel="noopener">Open PumpPad</a>
             </div>
           </article>
@@ -1343,10 +1329,9 @@
 
         <div class="cta-box">
           <div>
-            <h3>Base pronta per il prossimo step</h3>
+            <h3>Landing pronta per andare online</h3>
             <p>
-              Questa versione è perfetta come landing premium in HTML puro. Il prossimo upgrade naturale
-              è convertirla in Next.js con componenti Web3 veri, analytics e dashboard token.
+              Basta copiare il file come <code>index.html</code> e pubblicarlo su Netlify, Vercel o GitHub Pages.
             </p>
           </div>
           <button class="btn btn-primary" id="connectWalletBtnCta">Connect Wallet</button>
@@ -1358,39 +1343,28 @@
       <div class="container">
         <h2 class="section-title">FAQ</h2>
         <p class="section-subtitle">
-          Testi utili per chiarire subito agli utenti cosa fa il sito.
+          Risposte rapide da mostrare agli utenti.
         </p>
 
         <div class="faq-grid">
           <article class="faq-item">
             <h3>Il sito custodisce i fondi?</h3>
-            <p>
-              No. Questa struttura è pensata come interfaccia non-custodial:
-              l’utente usa il proprio wallet e conferma le operazioni dal proprio provider Web3.
-            </p>
+            <p>No. Questa struttura è pensata come interfaccia non-custodial.</p>
           </article>
 
           <article class="faq-item">
             <h3>Serve MetaMask?</h3>
-            <p>
-              Serve un wallet EVM compatibile con <code>window.ethereum</code>, come MetaMask
-              o wallet simili disponibili come estensione browser.
-            </p>
+            <p>Serve un wallet EVM compatibile con <code>window.ethereum</code>, come MetaMask.</p>
           </article>
 
           <article class="faq-item">
-            <h3>Il contract address di PEPU è già visibile?</h3>
-            <p>
-              Sì. Nel pannello hero trovi il contract address mostrato e copiabile con un click.
-            </p>
+            <h3>L’aggiunta rete è configurata?</h3>
+            <p>Sì. Lo script usa i parametri della rete PEPU V2.</p>
           </article>
 
           <article class="faq-item">
-            <h3>Posso aggiungere la rete PEPU direttamente dal sito?</h3>
-            <p>
-              Sì, ma conviene farlo solo dopo aver confermato i parametri mainnet definitivi.
-              In questa versione ho inserito i link ufficiali verificati e ho evitato di hardcodare una config mainnet non confermata.
-            </p>
+            <h3>Il token aggiunto al wallet è quello Ethereum?</h3>
+            <p>Sì. Il pulsante “Add $PEPU to Wallet” usa il contract Ethereum pubblico di $PEPU.</p>
           </article>
         </div>
       </div>
@@ -1401,13 +1375,12 @@
     <div class="container">
       <div class="footer-wrap">
         <div class="footer-note">
-          Template frontend premium per l’ecosistema PEPU. Prima di pubblicare in produzione,
-          aggiungi eventuali disclaimer legali, analytics, branding definitivo e configurazioni rete confermate.
+          Template frontend premium per PEPU Unchained con parametri di rete e link ufficiali già impostati.
         </div>
 
         <div class="footer-links">
           <a href="#top">Top</a>
-          <a href="#tokenomics">Tokenomics</a>
+          <a href="#tools">Tools</a>
           <a href="https://pepeunchained.com/" target="_blank" rel="noopener">Website</a>
           <a href="https://guide.pepeunchained.com/" target="_blank" rel="noopener">Docs</a>
         </div>
@@ -1421,28 +1394,85 @@
   </div>
 
   <script>
+    const PEPU_NETWORK = {
+      chainIdHex: "0x17ddd",
+      chainIdDec: 97741,
+      chainName: "Pepe Unchained V2",
+      rpcUrls: ["https://rpc-pepu-v2-mainnet-0.t.conduit.xyz"],
+      blockExplorerUrls: ["https://explorer-pepu-v2-mainnet-0.t.conduit.xyz"],
+      nativeCurrency: {
+        name: "PEPU",
+        symbol: "PEPU",
+        decimals: 18
+      }
+    };
+
+    const PEPU_ETH_TOKEN = {
+      type: "ERC20",
+      options: {
+        address: "0x93aA0ccD1e5628d3A841C4DbdF602D9eb04085d6",
+        symbol: "PEPU",
+        decimals: 18
+      }
+    };
+
     const menuToggle = document.getElementById("menuToggle");
     const mobileMenu = document.getElementById("mobileMenu");
     const mobileLinks = document.querySelectorAll(".mobile-links a");
-
-    const connectButtons = [
-      document.getElementById("connectWalletBtn"),
-      document.getElementById("connectWalletBtnMobile"),
-      document.getElementById("connectWalletBtnHero"),
-      document.getElementById("connectWalletBtnCta")
-    ].filter(Boolean);
 
     const headerWalletText = document.getElementById("headerWalletText");
     const walletAddress = document.getElementById("walletAddress");
     const walletChain = document.getElementById("walletChain");
     const walletBalance = document.getElementById("walletBalance");
 
-    const copyContractBtn = document.getElementById("copyContractBtn");
     const tokenContract = document.getElementById("tokenContract").textContent.trim();
 
     const statusBar = document.getElementById("statusBar");
     const statusTitle = document.getElementById("statusTitle");
     const statusText = document.getElementById("statusText");
+
+    const connectButtonIds = [
+      "connectWalletBtn",
+      "connectWalletBtnMobile",
+      "connectWalletBtnHero",
+      "connectWalletBtnTools",
+      "connectWalletBtnCta"
+    ];
+
+    const addNetworkButtonIds = [
+      "addNetworkBtnHero",
+      "addNetworkBtnPanel",
+      "addNetworkBtnTools",
+      "addNetworkBtnTokenomics"
+    ];
+
+    const switchNetworkButtonIds = [
+      "switchNetworkBtnHero",
+      "switchNetworkBtnPanel",
+      "switchNetworkBtnTools",
+      "switchNetworkBtnTokenomics"
+    ];
+
+    const addTokenButtonIds = [
+      "addTokenBtn",
+      "addTokenBtnTools"
+    ];
+
+    const copyContractButtonIds = [
+      "copyContractBtn",
+      "copyContractBtnTools"
+    ];
+
+    function $(id) {
+      return document.getElementById(id);
+    }
+
+    function bindClick(ids, handler) {
+      ids.forEach(id => {
+        const el = $(id);
+        if (el) el.addEventListener("click", handler);
+      });
+    }
 
     function toggleMenu(forceClose = false) {
       const shouldOpen = forceClose ? false : !mobileMenu.classList.contains("open");
@@ -1468,7 +1498,7 @@
       clearTimeout(showStatus._timer);
       showStatus._timer = setTimeout(() => {
         statusBar.className = "status-bar";
-      }, 3400);
+      }, 3600);
     }
 
     function setWalletDisconnected() {
@@ -1476,6 +1506,11 @@
       walletAddress.textContent = "Non connesso";
       walletChain.textContent = "—";
       walletBalance.textContent = "—";
+    }
+
+    async function getCurrentChainId() {
+      if (!window.ethereum) return null;
+      return await window.ethereum.request({ method: "eth_chainId" });
     }
 
     async function fetchBalance(account) {
@@ -1487,8 +1522,8 @@
         });
 
         const wei = BigInt(balanceHex);
-        const eth = Number(wei) / 1e18;
-        walletBalance.textContent = `${eth.toFixed(4)} ETH`;
+        const native = Number(wei) / 1e18;
+        walletBalance.textContent = `${native.toFixed(4)} native`;
       } catch (error) {
         walletBalance.textContent = "Errore lettura";
       }
@@ -1535,7 +1570,7 @@
           method: "eth_requestAccounts"
         });
 
-        const chainId = await window.ethereum.request({ method: "eth_chainId" });
+        const chainId = await getCurrentChainId();
         const account = accounts[0];
 
         headerWalletText.textContent = shortAddress(account);
@@ -1560,21 +1595,163 @@
       }
     }
 
-    async function copyContract() {
+    async function addPepuNetwork() {
+      if (!window.ethereum) {
+        showStatus(
+          "Wallet richiesto",
+          "Per aggiungere la rete serve un wallet browser come MetaMask.",
+          "error"
+        );
+        return;
+      }
+
       try {
-        await navigator.clipboard.writeText(tokenContract);
-        showStatus("Contract copiato", "L'indirizzo PEPU è stato copiato negli appunti.", "success");
+        await window.ethereum.request({
+          method: "wallet_addEthereumChain",
+          params: [{
+            chainId: PEPU_NETWORK.chainIdHex,
+            chainName: PEPU_NETWORK.chainName,
+            rpcUrls: PEPU_NETWORK.rpcUrls,
+            blockExplorerUrls: PEPU_NETWORK.blockExplorerUrls,
+            nativeCurrency: PEPU_NETWORK.nativeCurrency
+          }]
+        });
+
+        showStatus(
+          "Rete aggiunta",
+          "La rete PEPU Unchained V2 è stata proposta al wallet con successo.",
+          "success"
+        );
+
+        await refreshWalletUI();
       } catch (error) {
-        showStatus("Copia non riuscita", "Non sono riuscito a copiare il contract address.", "error");
+        showStatus(
+          "Aggiunta rete fallita",
+          "Il wallet ha rifiutato o non ha completato l'aggiunta della rete.",
+          "error"
+        );
       }
     }
 
-    copyContractBtn?.addEventListener("click", copyContract);
-    connectButtons.forEach(btn => btn.addEventListener("click", connectWallet));
+    async function switchToPepuNetwork() {
+      if (!window.ethereum) {
+        showStatus(
+          "Wallet richiesto",
+          "Per cambiare rete serve un wallet browser come MetaMask.",
+          "error"
+        );
+        return;
+      }
+
+      try {
+        await window.ethereum.request({
+          method: "wallet_switchEthereumChain",
+          params: [{ chainId: PEPU_NETWORK.chainIdHex }]
+        });
+
+        showStatus(
+          "Rete cambiata",
+          "Ora il wallet è impostato su PEPU Unchained V2.",
+          "success"
+        );
+
+        await refreshWalletUI();
+      } catch (error) {
+        if (error && (error.code === 4902 || String(error.message).includes("4902"))) {
+          try {
+            await addPepuNetwork();
+            await window.ethereum.request({
+              method: "wallet_switchEthereumChain",
+              params: [{ chainId: PEPU_NETWORK.chainIdHex }]
+            });
+
+            showStatus(
+              "Rete aggiunta e selezionata",
+              "PEPU Unchained V2 è stata aggiunta e attivata nel wallet.",
+              "success"
+            );
+
+            await refreshWalletUI();
+          } catch (nestedError) {
+            showStatus(
+              "Switch non completato",
+              "La rete non è stata selezionata dal wallet.",
+              "error"
+            );
+          }
+        } else {
+          showStatus(
+            "Switch non completato",
+            "Il wallet ha rifiutato o non ha completato il cambio rete.",
+            "error"
+          );
+        }
+      }
+    }
+
+    async function addPepuTokenToWallet() {
+      if (!window.ethereum) {
+        showStatus(
+          "Wallet richiesto",
+          "Per aggiungere il token serve un wallet browser come MetaMask.",
+          "error"
+        );
+        return;
+      }
+
+      try {
+        const wasAdded = await window.ethereum.request({
+          method: "wallet_watchAsset",
+          params: PEPU_ETH_TOKEN
+        });
+
+        if (wasAdded) {
+          showStatus(
+            "Token aggiunto",
+            "$PEPU su Ethereum è stato aggiunto al wallet.",
+            "success"
+          );
+        } else {
+          showStatus(
+            "Operazione annullata",
+            "L'aggiunta del token è stata annullata.",
+            "error"
+          );
+        }
+      } catch (error) {
+        showStatus(
+          "Aggiunta token fallita",
+          "Non sono riuscito ad aggiungere il token al wallet.",
+          "error"
+        );
+      }
+    }
+
+    async function copyContract() {
+      try {
+        await navigator.clipboard.writeText(tokenContract);
+        showStatus(
+          "Contract copiato",
+          "L'indirizzo del token $PEPU è stato copiato negli appunti.",
+          "success"
+        );
+      } catch (error) {
+        showStatus(
+          "Copia non riuscita",
+          "Non sono riuscito a copiare il contract address.",
+          "error"
+        );
+      }
+    }
+
+    bindClick(connectButtonIds, connectWallet);
+    bindClick(addNetworkButtonIds, addPepuNetwork);
+    bindClick(switchNetworkButtonIds, switchToPepuNetwork);
+    bindClick(addTokenButtonIds, addPepuTokenToWallet);
+    bindClick(copyContractButtonIds, copyContract);
 
     if (window.ethereum) {
       refreshWalletUI();
-
       window.ethereum.on?.("accountsChanged", refreshWalletUI);
       window.ethereum.on?.("chainChanged", refreshWalletUI);
     } else {
