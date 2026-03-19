@@ -818,6 +818,102 @@
     .status-bar.success { border-color: rgba(125,255,159,0.22); }
     .status-bar.error { border-color: rgba(255,123,123,0.22); }
 
+
+    .input,
+    .select {
+      width: 100%;
+      min-height: 52px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(7, 17, 31, 0.62);
+      color: var(--text);
+      padding: 14px 16px;
+      font-size: 14px;
+      font-weight: 700;
+      outline: none;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .input:focus,
+    .select:focus {
+      border-color: rgba(125,255,159,0.45);
+      box-shadow: 0 0 0 3px rgba(125,255,159,0.08);
+    }
+
+    .bridge-config-card {
+      margin-top: 26px;
+      padding: 24px;
+      border-radius: 24px;
+      background:
+        linear-gradient(135deg, rgba(125,255,159,0.06), rgba(118,168,255,0.05)),
+        rgba(16, 33, 60, 0.94);
+      border: 1px solid rgba(255,255,255,0.07);
+      box-shadow: var(--shadow);
+    }
+
+    .bridge-config-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 22px;
+      align-items: start;
+      margin-top: 18px;
+    }
+
+    .form-stack {
+      display: grid;
+      gap: 12px;
+    }
+
+    .field-label {
+      font-size: 13px;
+      font-weight: 800;
+      color: #dce9ff;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .helper-text {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .bridge-preview {
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      display: grid;
+      gap: 12px;
+    }
+
+    .preview-row {
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(7,17,31,0.42);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .preview-row .k {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .preview-row .v {
+      color: #fff;
+      font-size: 14px;
+      font-weight: 800;
+      word-break: break-all;
+      line-height: 1.6;
+    }
+
+
     .status-title {
       font-size: 14px;
       font-weight: 900;
@@ -834,7 +930,8 @@
       .hero-grid,
       .grid-3,
       .links-grid,
-      .tokenomics-grid {
+      .tokenomics-grid,
+      .bridge-config-grid {
         grid-template-columns: 1fr;
       }
 
@@ -1291,6 +1388,75 @@
             </div>
           </article>
         </div>
+
+        <div class="bridge-config-card">
+          <div class="meme-title">
+            <h3>Bridge Assistant</h3>
+            <div class="tag gold">CUSTOM</div>
+          </div>
+          <p style="color: var(--muted); line-height: 1.75;">
+            Configura un indirizzo destinatario visibile nella pagina. Il bridge resta non-custodial:
+            l’utente vede chiaramente dove sta inviando i fondi prima di aprire il bridge ufficiale.
+          </p>
+
+          <div class="bridge-config-grid">
+            <div class="form-stack">
+              <div>
+                <label class="field-label" for="bridgeRecipientInput">Indirizzo destinatario bridge</label>
+                <input
+                  class="input"
+                  id="bridgeRecipientInput"
+                  type="text"
+                  placeholder="0x..."
+                  value="0x588D359fc3FCE713e593B9748F39fE6B98085001"
+                  autocomplete="off"
+                  spellcheck="false"
+                />
+                <div class="helper-text" style="margin-top:8px;">
+                  Wallet destinatario preimpostato: 0x588D359fc3FCE713e593B9748F39fE6B98085001. Puoi comunque modificarlo. L’indirizzo viene salvato solo nel browser locale.
+                </div>
+              </div>
+
+              <div>
+                <label class="field-label" for="bridgeAssetSelect">Asset suggerito</label>
+                <select class="select" id="bridgeAssetSelect">
+                  <option value="PEPU">PEPU</option>
+                  <option value="ETH">ETH</option>
+                  <option value="USDT">USDT</option>
+                </select>
+              </div>
+
+              <div class="action-grid-3">
+                <button class="btn btn-primary" id="saveBridgeRecipientBtn">Salva indirizzo</button>
+                <button class="btn btn-secondary" id="useConnectedWalletBtn">Usa wallet connesso</button>
+                <button class="btn btn-gold" id="copyBridgeRecipientBtn">Copia indirizzo</button>
+              </div>
+            </div>
+
+            <div class="bridge-preview">
+              <div class="preview-row">
+                <div class="k">Destinazione attuale</div>
+                <div class="v" id="bridgeRecipientPreview">Non configurata</div>
+              </div>
+              <div class="preview-row">
+                <div class="k">Asset selezionato</div>
+                <div class="v" id="bridgeAssetPreview">PEPU</div>
+              </div>
+              <div class="preview-row">
+                <div class="k">Flusso</div>
+                <div class="v">Ethereum → Pepe Unchained bridge ufficiale</div>
+              </div>
+              <div class="action-grid-2">
+                <a class="btn btn-primary" id="openBridgeConfiguredBtn" href="https://pepubridge.com/" target="_blank" rel="noopener">Apri bridge ufficiale</a>
+                <a class="btn btn-secondary" id="openRecipientExplorerBtn" href="https://pepuscan.com/" target="_blank" rel="noopener">Apri wallet su explorer</a>
+              </div>
+              <div class="helper-text">
+                Nota: questa interfaccia non sposta fondi da sola e non nasconde il destinatario. L’utente deve sempre confermare nel wallet e nel bridge ufficiale.
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -1471,7 +1637,7 @@
 
           <article class="faq-item">
             <h3>Serve MetaMask?</h3>
-            <p>Serve un wallet EVM compatibile con <code>window.ethereum</code>, come MetaMask.</p>
+            <p>Serve un wallet EVM compatibile con <code>window.ethereum</code>, come MetaMask. Se apri il file in locale e il connect non parte, prova da <code>http://localhost</code>.</p>
           </article>
 
           <article class="faq-item">
@@ -1534,6 +1700,14 @@
         }
       };
 
+      const BRIDGE_CONFIG = {
+        officialUrl: "https://pepubridge.com/",
+        recipientStorageKey: "pepu_bridge_recipient",
+        defaultAsset: "PEPU",
+        defaultRecipient: "0x588D359fc3FCE713e593B9748F39fE6B98085001"
+      };
+
+
       const menuToggle = document.getElementById("menuToggle");
       const mobileMenu = document.getElementById("mobileMenu");
       const mobileLinks = document.querySelectorAll(".mobile-links a");
@@ -1549,6 +1723,15 @@
       const statusBar = document.getElementById("statusBar");
       const statusTitle = document.getElementById("statusTitle");
       const statusText = document.getElementById("statusText");
+
+      const bridgeRecipientInput = document.getElementById("bridgeRecipientInput");
+      const bridgeAssetSelect = document.getElementById("bridgeAssetSelect");
+      const bridgeRecipientPreview = document.getElementById("bridgeRecipientPreview");
+      const bridgeAssetPreview = document.getElementById("bridgeAssetPreview");
+      const openBridgeConfiguredBtn = document.getElementById("openBridgeConfiguredBtn");
+      const openRecipientExplorerBtn = document.getElementById("openRecipientExplorerBtn");
+      const bridgeSendConfirm = document.getElementById("bridgeSendConfirm");
+      const bridgeRecipientVisibleBox = document.getElementById("bridgeRecipientVisibleBox");
 
       const connectButtonIds = [
         "connectWalletBtnHero",
@@ -1579,6 +1762,18 @@
         "copyContractBtnTools"
       ];
 
+      const bridgeSaveButtonIds = [
+        "saveBridgeRecipientBtn"
+      ];
+
+      const bridgeUseWalletButtonIds = [
+        "useConnectedWalletBtn"
+      ];
+
+      const bridgeCopyButtonIds = [
+        "copyBridgeRecipientBtn"
+      ];
+
       function $(id) {
         return document.getElementById(id);
       }
@@ -1590,10 +1785,72 @@
         });
       }
 
+      let selectedProvider = null;
+      let discoveredProviders = [];
+
+      function normalizeInjectedProviders() {
+        const providers = [];
+
+        if (window.ethereum?.providers && Array.isArray(window.ethereum.providers)) {
+          providers.push(...window.ethereum.providers);
+        }
+
+        if (window.ethereum) {
+          providers.push(window.ethereum);
+        }
+
+        if (window.web3?.currentProvider) {
+          providers.push(window.web3.currentProvider);
+        }
+
+        const unique = [];
+        const seen = new Set();
+
+        providers.forEach((provider) => {
+          if (!provider || typeof provider.request !== 'function') return;
+          if (seen.has(provider)) return;
+          seen.add(provider);
+          unique.push(provider);
+        });
+
+        discoveredProviders = unique;
+
+        if (!selectedProvider && unique.length) {
+          selectedProvider = unique.find((provider) => provider.isMetaMask) || unique[0];
+        }
+
+        return unique;
+      }
+
       function getProvider() {
-        if (window.ethereum) return window.ethereum;
-        if (window.web3 && window.web3.currentProvider) return window.web3.currentProvider;
+        const providers = normalizeInjectedProviders();
+        if (selectedProvider?.request) return selectedProvider;
+        if (providers.length) return providers[0];
         return null;
+      }
+
+      function waitForInjectedProvider(timeout = 1600) {
+        return new Promise((resolve) => {
+          const immediate = getProvider();
+          if (immediate?.request) {
+            resolve(immediate);
+            return;
+          }
+
+          let done = false;
+
+          const finish = () => {
+            if (done) return;
+            done = true;
+            window.removeEventListener('ethereum#initialized', handleInit);
+            resolve(getProvider());
+          };
+
+          const handleInit = () => finish();
+
+          window.addEventListener('ethereum#initialized', handleInit, { once: true });
+          setTimeout(finish, timeout);
+        });
       }
 
       function toggleMenu(forceClose = false) {
@@ -1625,6 +1882,166 @@
         showStatus._timer = setTimeout(() => {
           statusBar.className = "status-bar";
         }, 3600);
+      }
+
+      function isValidEvmAddress(address) {
+        return /^0x[a-fA-F0-9]{40}$/.test(String(address || "").trim());
+      }
+
+      function getStoredBridgeRecipient() {
+        try {
+          return localStorage.getItem(BRIDGE_CONFIG.recipientStorageKey) || BRIDGE_CONFIG.defaultRecipient || "";
+        } catch (error) {
+          return "";
+        }
+      }
+
+      function setStoredBridgeRecipient(address) {
+        try {
+          localStorage.setItem(BRIDGE_CONFIG.recipientStorageKey, address);
+        } catch (error) {
+          // ignore storage issues
+        }
+      }
+
+      function buildRecipientExplorerUrl(address) {
+        if (!isValidEvmAddress(address)) return "https://pepuscan.com/";
+        return `https://pepuscan.com/address/${address}`;
+      }
+
+      function updateBridgeActionState(recipient) {
+        const confirmed = !!bridgeSendConfirm?.checked;
+        const valid = isValidEvmAddress(recipient);
+        const enabled = confirmed && valid;
+
+        if (openBridgeConfiguredBtn) {
+          openBridgeConfiguredBtn.style.pointerEvents = enabled ? "auto" : "none";
+          openBridgeConfiguredBtn.style.opacity = enabled ? "1" : "0.55";
+          openBridgeConfiguredBtn.setAttribute("aria-disabled", enabled ? "false" : "true");
+        }
+      }
+
+      function refreshBridgeUI() {
+        const selectedAsset = bridgeAssetSelect?.value || BRIDGE_CONFIG.defaultAsset;
+        const recipient = (bridgeRecipientInput?.value || getStoredBridgeRecipient()).trim();
+
+        if (bridgeAssetPreview) bridgeAssetPreview.textContent = selectedAsset;
+        if (bridgeRecipientPreview) {
+          bridgeRecipientPreview.textContent = isValidEvmAddress(recipient)
+            ? recipient
+            : "Non configurata";
+        }
+
+        if (bridgeRecipientVisibleBox) {
+          bridgeRecipientVisibleBox.textContent = isValidEvmAddress(recipient)
+            ? recipient
+            : "Non configurata";
+        }
+
+        if (openBridgeConfiguredBtn) {
+          openBridgeConfiguredBtn.href = BRIDGE_CONFIG.officialUrl;
+          openBridgeConfiguredBtn.dataset.recipient = recipient;
+          openBridgeConfiguredBtn.dataset.asset = selectedAsset;
+        }
+
+        if (openRecipientExplorerBtn) {
+          openRecipientExplorerBtn.href = buildRecipientExplorerUrl(recipient);
+        }
+
+        updateBridgeActionState(recipient);
+      }
+
+      function saveBridgeRecipient() {
+        const recipient = bridgeRecipientInput?.value?.trim() || "";
+
+        if (!isValidEvmAddress(recipient)) {
+          showStatus(
+            "Indirizzo non valido",
+            "Inserisci un address EVM valido in formato 0x...",
+            "error"
+          );
+          refreshBridgeUI();
+          return;
+        }
+
+        setStoredBridgeRecipient(recipient);
+        refreshBridgeUI();
+        showStatus(
+          "Indirizzo bridge salvato",
+          `Destinazione salvata: ${shortAddress(recipient)}.`,
+          "success"
+        );
+      }
+
+      async function useConnectedWalletAsBridgeRecipient() {
+        const provider = getProvider();
+
+        if (!provider?.request) {
+          showStatus(
+            "Wallet richiesto",
+            "Collega un wallet prima di usare questa scorciatoia.",
+            "error"
+          );
+          return;
+        }
+
+        try {
+          const accounts = await provider.request({ method: "eth_accounts" });
+          const account = accounts?.[0];
+
+          if (!account) {
+            showStatus(
+              "Wallet non connesso",
+              "Connetti il wallet per usare l’indirizzo corrente come destinazione.",
+              "error"
+            );
+            return;
+          }
+
+          if (bridgeRecipientInput) bridgeRecipientInput.value = account;
+          setStoredBridgeRecipient(account);
+          refreshBridgeUI();
+
+          showStatus(
+            "Destinazione aggiornata",
+            `Ora il bridge userà ${shortAddress(account)} come riferimento visibile.`,
+            "success"
+          );
+        } catch (error) {
+          showStatus(
+            "Lettura wallet fallita",
+            "Non sono riuscito a leggere l’account connesso.",
+            "error"
+          );
+        }
+      }
+
+      async function copyBridgeRecipient() {
+        const recipient = (bridgeRecipientInput?.value || getStoredBridgeRecipient()).trim();
+
+        if (!isValidEvmAddress(recipient)) {
+          showStatus(
+            "Nessun indirizzo valido",
+            "Salva prima un indirizzo destinatario valido.",
+            "error"
+          );
+          return;
+        }
+
+        try {
+          await navigator.clipboard.writeText(recipient);
+          showStatus(
+            "Indirizzo copiato",
+            "L’indirizzo destinatario del bridge è stato copiato.",
+            "success"
+          );
+        } catch (error) {
+          showStatus(
+            "Copia non riuscita",
+            "Non sono riuscito a copiare l’indirizzo destinatario.",
+            "error"
+          );
+        }
       }
 
       function setWalletDisconnected() {
@@ -1688,16 +2105,25 @@
       }
 
       async function connectWallet() {
-        const provider = getProvider();
+        let provider = getProvider();
 
         if (!provider?.request) {
+          provider = await waitForInjectedProvider();
+        }
+
+        if (!provider?.request) {
+          const localHint = location.protocol === "file:";
           showStatus(
             "Wallet non trovato",
-            "Apri il sito con MetaMask o un wallet EVM compatibile.",
+            localHint
+              ? "Stai aprendo il file in locale. Aprilo da localhost oppure controlla che l'estensione wallet sia attiva e autorizzata nel browser."
+              : "Apri il sito con MetaMask o un wallet EVM compatibile.",
             "error"
           );
           return;
         }
+
+        selectedProvider = provider;
 
         try {
           const accounts = await provider.request({
@@ -1727,12 +2153,12 @@
 
           toggleMenu(true);
         } catch (error) {
-          const msg = error?.message || "";
+          const msg = String(error?.message || "");
           showStatus(
             "Connessione fallita",
             msg.includes("rejected") || msg.includes("User rejected")
               ? "Connessione annullata dall'utente."
-              : "Il wallet non ha completato la connessione.",
+              : msg || "Il wallet non ha completato la connessione.",
             "error"
           );
         }
@@ -1901,18 +2327,70 @@
       bindClick(addTokenButtonIds, addPepuTokenToWallet);
       bindClick(copyContractButtonIds, copyContract);
 
-      const provider = getProvider();
+      bindClick(bridgeSaveButtonIds, saveBridgeRecipient);
+      bindClick(bridgeUseWalletButtonIds, useConnectedWalletAsBridgeRecipient);
+      bindClick(bridgeCopyButtonIds, copyBridgeRecipient);
 
-      if (provider?.request) {
-        refreshWalletUI();
-
-        if (provider.on) {
-          provider.on("accountsChanged", refreshWalletUI);
-          provider.on("chainChanged", refreshWalletUI);
-        }
-      } else {
-        setWalletDisconnected();
+      if (bridgeRecipientInput) {
+        bridgeRecipientInput.addEventListener("input", refreshBridgeUI);
       }
+
+      if (bridgeAssetSelect) {
+        bridgeAssetSelect.addEventListener("change", refreshBridgeUI);
+      }
+
+      if (bridgeSendConfirm) {
+        bridgeSendConfirm.addEventListener("change", refreshBridgeUI);
+      }
+
+      if (openBridgeConfiguredBtn) {
+        openBridgeConfiguredBtn.addEventListener("click", (event) => {
+          const recipient = (bridgeRecipientInput?.value || getStoredBridgeRecipient()).trim();
+          const enabled = isValidEvmAddress(recipient) && !!bridgeSendConfirm?.checked;
+
+          if (!enabled) {
+            event.preventDefault();
+            showStatus(
+              "Conferma richiesta",
+              "Mostra un indirizzo valido e seleziona la conferma prima di procedere.",
+              "error"
+            );
+          }
+        });
+      }
+
+      if (bridgeAssetSelect) {
+        bridgeAssetSelect.addEventListener("change", refreshBridgeUI);
+      }
+
+      if (bridgeRecipientInput) {
+        bridgeRecipientInput.value = getStoredBridgeRecipient();
+        bridgeRecipientInput.addEventListener("input", refreshBridgeUI);
+      }
+
+      refreshBridgeUI();
+
+      waitForInjectedProvider().then((provider) => {
+        if (provider?.request) {
+          selectedProvider = provider;
+          refreshWalletUI();
+
+          if (provider.on) {
+            provider.on("accountsChanged", refreshWalletUI);
+            provider.on("chainChanged", refreshWalletUI);
+          }
+        } else {
+          setWalletDisconnected();
+
+          if (location.protocol === "file:") {
+            showStatus(
+              "Suggerimento wallet",
+              "Se il connect non parte, esegui il file da localhost invece che da file locale.",
+              "error"
+            );
+          }
+        }
+      });
     });
   </script>
 </body>
