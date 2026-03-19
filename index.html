@@ -20,11 +20,9 @@
       --green: #7dff9f;
       --green-2: #2ddb75;
       --blue: #76a8ff;
-      --pink: #ff6bd8;
       --gold: #ffd76f;
       --danger: #ff7b7b;
       --shadow: 0 24px 70px rgba(0,0,0,0.36);
-      --radius: 24px;
       --max: 1200px;
     }
 
@@ -126,6 +124,7 @@
       white-space: nowrap;
       position: relative;
       overflow: hidden;
+      min-height: 52px;
     }
 
     .btn:hover { transform: translateY(-2px); }
@@ -188,7 +187,7 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(6,17,29,0.62);
+      background: rgba(6,17,29,0.72);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       border-bottom: 1px solid rgba(255,255,255,0.05);
@@ -207,6 +206,7 @@
       align-items: center;
       gap: 14px;
       min-width: 0;
+      flex: 1;
     }
 
     .brand-logo {
@@ -224,12 +224,14 @@
       font-size: 16px;
       font-weight: 900;
       letter-spacing: 0.05em;
+      line-height: 1.1;
     }
 
     .brand-sub {
       font-size: 12px;
       color: var(--muted);
       margin-top: 3px;
+      line-height: 1.2;
     }
 
     .nav-links {
@@ -253,28 +255,6 @@
       gap: 12px;
     }
 
-    .wallet-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      min-height: 48px;
-      padding: 0 16px;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid var(--line);
-      font-size: 14px;
-      font-weight: 700;
-      color: #dce9ff;
-    }
-
-    .wallet-chip .mini-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: var(--green);
-      box-shadow: 0 0 14px rgba(125,255,159,0.95);
-    }
-
     .menu-toggle {
       display: none;
       width: 48px;
@@ -284,6 +264,7 @@
       background: rgba(255,255,255,0.04);
       cursor: pointer;
       position: relative;
+      flex-shrink: 0;
     }
 
     .menu-toggle span,
@@ -306,21 +287,25 @@
     .menu-toggle.active::before { transform: rotate(45deg); top: 23px; }
     .menu-toggle.active::after { transform: rotate(-45deg); top: 23px; }
 
-    .mobile-menu { display: none; padding-bottom: 18px; }
+    .mobile-menu {
+      display: none;
+      padding-bottom: 18px;
+    }
+
     .mobile-menu.open { display: block; }
 
     .mobile-menu-card {
       padding: 18px;
       border-radius: 20px;
-      background: rgba(10, 23, 46, 0.94);
+      background: rgba(10, 23, 46, 0.96);
       border: 1px solid var(--line);
       box-shadow: var(--shadow);
     }
 
     .mobile-links {
       display: grid;
-      gap: 12px;
-      margin-bottom: 16px;
+      gap: 10px;
+      margin-bottom: 14px;
     }
 
     .mobile-links a {
@@ -333,7 +318,32 @@
       border: 1px solid rgba(255,255,255,0.05);
     }
 
-    .mobile-actions { display: grid; gap: 10px; }
+    .mobile-actions {
+      display: grid;
+      gap: 10px;
+    }
+
+    .mobile-wallet-chip {
+      display: none;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      color: #dce9ff;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .mobile-wallet-chip .mini-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--green);
+      box-shadow: 0 0 14px rgba(125,255,159,0.95);
+    }
 
     .hero {
       position: relative;
@@ -489,7 +499,6 @@
     .wallet-panel,
     .token-contract,
     .feature-card,
-    .step-card,
     .link-card,
     .faq-item,
     .token-card {
@@ -516,7 +525,10 @@
       margin-bottom: 14px;
     }
 
-    .meme-title h3 { font-size: 22px; letter-spacing: -0.02em; }
+    .meme-title h3 {
+      font-size: 22px;
+      letter-spacing: -0.02em;
+    }
 
     .tag {
       font-size: 12px;
@@ -525,6 +537,7 @@
       background: linear-gradient(135deg, var(--green), #ebff98);
       padding: 8px 10px;
       border-radius: 999px;
+      flex-shrink: 0;
     }
 
     .tag.gold {
@@ -543,6 +556,7 @@
       padding: 16px;
       background: rgba(255,255,255,0.04);
       border: 1px solid rgba(255,255,255,0.06);
+      min-width: 0;
     }
 
     .stat-item .k {
@@ -556,6 +570,7 @@
       font-size: 18px;
       font-weight: 900;
       color: #fff;
+      word-break: break-word;
     }
 
     .action-row,
@@ -568,12 +583,19 @@
 
     .action-row,
     .action-grid-2 { grid-template-columns: 1fr 1fr; }
+
     .action-grid-3 { grid-template-columns: repeat(3, 1fr); }
 
     .wallet-panel h4,
-    .token-contract h4 { font-size: 16px; margin-bottom: 14px; }
+    .token-contract h4 {
+      font-size: 16px;
+      margin-bottom: 14px;
+    }
 
-    .wallet-list { display: grid; gap: 10px; }
+    .wallet-list {
+      display: grid;
+      gap: 10px;
+    }
 
     .wallet-row {
       display: flex;
@@ -590,6 +612,7 @@
       color: var(--muted);
       font-size: 13px;
       font-weight: 700;
+      flex-shrink: 0;
     }
 
     .wallet-row .value {
@@ -598,6 +621,7 @@
       color: #fff;
       word-break: break-all;
       text-align: right;
+      min-width: 0;
     }
 
     .contract-box {
@@ -617,10 +641,10 @@
       word-break: break-all;
       line-height: 1.5;
       font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      min-width: 0;
     }
 
     .grid-3,
-    .steps-grid,
     .links-grid,
     .tokenomics-grid {
       display: grid;
@@ -629,7 +653,6 @@
     }
 
     .grid-3,
-    .steps-grid,
     .links-grid {
       grid-template-columns: repeat(3, 1fr);
     }
@@ -639,8 +662,7 @@
       align-items: start;
     }
 
-    .feature-icon,
-    .step-number {
+    .feature-icon {
       width: 56px;
       height: 56px;
       border-radius: 18px;
@@ -654,7 +676,6 @@
     }
 
     .feature-card h3,
-    .step-card h3,
     .link-card h3,
     .token-card h3,
     .faq-item h3 {
@@ -664,7 +685,6 @@
     }
 
     .feature-card p,
-    .step-card p,
     .link-card p,
     .token-card p,
     .faq-item p {
@@ -702,6 +722,7 @@
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      word-break: break-word;
     }
 
     .allocations {
@@ -746,33 +767,6 @@
       display: grid;
       gap: 16px;
       margin-top: 34px;
-    }
-
-    .cta-box {
-      margin-top: 40px;
-      padding: 30px;
-      border-radius: 28px;
-      background:
-        linear-gradient(135deg, rgba(125,255,159,0.1), rgba(118,168,255,0.08)),
-        rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      flex-wrap: wrap;
-      box-shadow: var(--shadow);
-    }
-
-    .cta-box h3 {
-      font-size: clamp(24px, 3vw, 34px);
-      margin-bottom: 8px;
-    }
-
-    .cta-box p {
-      color: var(--muted);
-      max-width: 760px;
-      line-height: 1.7;
     }
 
     footer {
@@ -836,55 +830,188 @@
       color: var(--muted);
     }
 
-    @media (max-width: 1080px) {
+    @media (max-width: 1180px) {
       .hero-grid,
       .grid-3,
-      .steps-grid,
       .links-grid,
       .tokenomics-grid {
         grid-template-columns: 1fr;
       }
 
-      .hero-card { min-height: auto; }
-      .action-grid-3 { grid-template-columns: 1fr; }
+      .hero-card {
+        min-height: auto;
+      }
     }
 
     @media (max-width: 900px) {
+      .container {
+        width: min(var(--max), calc(100% - 24px));
+      }
+
       .nav-links,
-      .nav-actions .btn-secondary,
-      .nav-actions .wallet-chip {
+      .nav-actions .btn-secondary {
         display: none;
       }
 
-      .menu-toggle { display: inline-block; }
-      .hero { padding-top: 44px; }
-      .hero-copy p { font-size: 17px; }
+      .menu-toggle {
+        display: inline-block;
+      }
+
+      .mobile-wallet-chip {
+        display: flex;
+      }
+
+      .hero {
+        padding-top: 34px;
+      }
+
+      .hero-copy h1 {
+        font-size: clamp(36px, 10vw, 54px);
+        line-height: 0.98;
+      }
+
+      .hero-copy p {
+        font-size: 16px;
+        line-height: 1.7;
+      }
+
+      .section {
+        padding: 74px 0;
+      }
+
+      .section-title {
+        font-size: clamp(30px, 9vw, 42px);
+      }
     }
 
     @media (max-width: 640px) {
-      .container { width: min(var(--max), calc(100% - 20px)); }
-      .section { padding: 68px 0; }
-      .hero-copy h1 { font-size: 42px; }
+      .container {
+        width: min(var(--max), calc(100% - 18px));
+      }
+
+      .nav-wrap {
+        min-height: 74px;
+      }
+
+      .brand {
+        gap: 10px;
+        min-width: 0;
+      }
+
+      .brand-logo {
+        width: 44px;
+        height: 44px;
+        border-radius: 14px;
+      }
+
+      .brand-title {
+        font-size: 13px;
+        letter-spacing: 0.03em;
+        word-break: break-word;
+      }
+
+      .brand-sub {
+        font-size: 11px;
+      }
+
+      .hero {
+        padding: 26px 0 28px;
+      }
+
+      .hero-copy h1 {
+        font-size: 34px;
+        margin: 14px 0;
+      }
+
+      .hero-copy p {
+        font-size: 15px;
+        margin-bottom: 22px;
+      }
+
       .hero-actions,
       .action-row,
-      .action-grid-2 {
-        display: grid;
+      .action-grid-2,
+      .action-grid-3 {
         grid-template-columns: 1fr;
       }
-      .btn { width: 100%; }
-      .stat-box { grid-template-columns: 1fr; }
+
+      .hero-actions {
+        display: grid;
+      }
+
+      .btn {
+        width: 100%;
+        min-height: 50px;
+        padding: 14px 18px;
+        font-size: 14px;
+      }
+
+      .hero-metrics {
+        gap: 10px;
+      }
+
+      .metric-pill {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .stat-box {
+        grid-template-columns: 1fr;
+      }
+
+      .wallet-row,
+      .contract-box,
+      .allocation-top {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .wallet-row .value,
+      .contract-box code {
+        text-align: left;
+        width: 100%;
+      }
+
       .feature-card,
-      .step-card,
       .link-card,
       .faq-item,
       .hero-card,
-      .cta-box,
       .meme-card,
       .wallet-panel,
       .token-contract,
       .card,
-      .supply-card {
-        padding: 20px;
+      .supply-card,
+      .token-card {
+        padding: 18px;
+        border-radius: 20px;
+      }
+
+      .meme-title,
+      .hero-topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .feature-card h3,
+      .link-card h3,
+      .token-card h3,
+      .faq-item h3,
+      .meme-title h3 {
+        font-size: 20px;
+      }
+
+      .supply-value {
+        font-size: 34px;
+      }
+
+      .footer-links {
+        gap: 12px;
+      }
+
+      .status-bar {
+        right: 10px;
+        bottom: 10px;
+        width: calc(100% - 20px);
       }
     }
   </style>
@@ -936,12 +1063,7 @@
         </nav>
 
         <div class="nav-actions">
-          <div class="wallet-chip">
-            <span class="mini-dot"></span>
-            <span id="headerWalletText">Wallet non connesso</span>
-          </div>
           <a class="btn btn-secondary" href="#tools">Apri tools</a>
-          <button class="btn btn-primary" id="connectWalletBtn">Connect Wallet</button>
         </div>
 
         <button class="menu-toggle" id="menuToggle" aria-label="Apri menu mobile">
@@ -951,6 +1073,11 @@
 
       <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu-card">
+          <div class="mobile-wallet-chip">
+            <span class="mini-dot"></span>
+            <span id="mobileWalletText">Wallet non connesso</span>
+          </div>
+
           <div class="mobile-links">
             <a href="#features">Features</a>
             <a href="#tools">Tools</a>
@@ -958,8 +1085,8 @@
             <a href="#links">Official Links</a>
             <a href="#faq">FAQ</a>
           </div>
+
           <div class="mobile-actions">
-            <button class="btn btn-primary btn-full" id="connectWalletBtnMobile">Connect Wallet</button>
             <a class="btn btn-secondary btn-full" href="#tools">Vai ai tools</a>
           </div>
         </div>
@@ -1326,16 +1453,6 @@
             </div>
           </article>
         </div>
-
-        <div class="cta-box">
-          <div>
-            <h3>Landing pronta per andare online</h3>
-            <p>
-              Basta copiare il file come <code>index.html</code> e pubblicarlo su Netlify, Vercel o GitHub Pages.
-            </p>
-          </div>
-          <button class="btn btn-primary" id="connectWalletBtnCta">Connect Wallet</button>
-        </div>
       </div>
     </section>
 
@@ -1394,369 +1511,409 @@
   </div>
 
   <script>
-    const PEPU_NETWORK = {
-      chainIdHex: "0x17ddd",
-      chainIdDec: 97741,
-      chainName: "Pepe Unchained V2",
-      rpcUrls: ["https://rpc-pepu-v2-mainnet-0.t.conduit.xyz"],
-      blockExplorerUrls: ["https://explorer-pepu-v2-mainnet-0.t.conduit.xyz"],
-      nativeCurrency: {
-        name: "PEPU",
-        symbol: "PEPU",
-        decimals: 18
+    document.addEventListener("DOMContentLoaded", () => {
+      const PEPU_NETWORK = {
+        chainIdHex: "0x17ddd",
+        chainIdDec: 97741,
+        chainName: "Pepe Unchained V2",
+        rpcUrls: ["https://rpc-pepu-v2-mainnet-0.t.conduit.xyz"],
+        blockExplorerUrls: ["https://explorer-pepu-v2-mainnet-0.t.conduit.xyz"],
+        nativeCurrency: {
+          name: "PEPU",
+          symbol: "PEPU",
+          decimals: 18
+        }
+      };
+
+      const PEPU_ETH_TOKEN = {
+        type: "ERC20",
+        options: {
+          address: "0x93aA0ccD1e5628d3A841C4DbdF602D9eb04085d6",
+          symbol: "PEPU",
+          decimals: 18
+        }
+      };
+
+      const menuToggle = document.getElementById("menuToggle");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const mobileLinks = document.querySelectorAll(".mobile-links a");
+
+      const mobileWalletText = document.getElementById("mobileWalletText");
+      const walletAddress = document.getElementById("walletAddress");
+      const walletChain = document.getElementById("walletChain");
+      const walletBalance = document.getElementById("walletBalance");
+
+      const tokenContractEl = document.getElementById("tokenContract");
+      const tokenContract = tokenContractEl ? tokenContractEl.textContent.trim() : "";
+
+      const statusBar = document.getElementById("statusBar");
+      const statusTitle = document.getElementById("statusTitle");
+      const statusText = document.getElementById("statusText");
+
+      const connectButtonIds = [
+        "connectWalletBtnHero",
+        "connectWalletBtnTools"
+      ];
+
+      const addNetworkButtonIds = [
+        "addNetworkBtnHero",
+        "addNetworkBtnPanel",
+        "addNetworkBtnTools",
+        "addNetworkBtnTokenomics"
+      ];
+
+      const switchNetworkButtonIds = [
+        "switchNetworkBtnHero",
+        "switchNetworkBtnPanel",
+        "switchNetworkBtnTools",
+        "switchNetworkBtnTokenomics"
+      ];
+
+      const addTokenButtonIds = [
+        "addTokenBtn",
+        "addTokenBtnTools"
+      ];
+
+      const copyContractButtonIds = [
+        "copyContractBtn",
+        "copyContractBtnTools"
+      ];
+
+      function $(id) {
+        return document.getElementById(id);
       }
-    };
 
-    const PEPU_ETH_TOKEN = {
-      type: "ERC20",
-      options: {
-        address: "0x93aA0ccD1e5628d3A841C4DbdF602D9eb04085d6",
-        symbol: "PEPU",
-        decimals: 18
-      }
-    };
-
-    const menuToggle = document.getElementById("menuToggle");
-    const mobileMenu = document.getElementById("mobileMenu");
-    const mobileLinks = document.querySelectorAll(".mobile-links a");
-
-    const headerWalletText = document.getElementById("headerWalletText");
-    const walletAddress = document.getElementById("walletAddress");
-    const walletChain = document.getElementById("walletChain");
-    const walletBalance = document.getElementById("walletBalance");
-
-    const tokenContract = document.getElementById("tokenContract").textContent.trim();
-
-    const statusBar = document.getElementById("statusBar");
-    const statusTitle = document.getElementById("statusTitle");
-    const statusText = document.getElementById("statusText");
-
-    const connectButtonIds = [
-      "connectWalletBtn",
-      "connectWalletBtnMobile",
-      "connectWalletBtnHero",
-      "connectWalletBtnTools",
-      "connectWalletBtnCta"
-    ];
-
-    const addNetworkButtonIds = [
-      "addNetworkBtnHero",
-      "addNetworkBtnPanel",
-      "addNetworkBtnTools",
-      "addNetworkBtnTokenomics"
-    ];
-
-    const switchNetworkButtonIds = [
-      "switchNetworkBtnHero",
-      "switchNetworkBtnPanel",
-      "switchNetworkBtnTools",
-      "switchNetworkBtnTokenomics"
-    ];
-
-    const addTokenButtonIds = [
-      "addTokenBtn",
-      "addTokenBtnTools"
-    ];
-
-    const copyContractButtonIds = [
-      "copyContractBtn",
-      "copyContractBtnTools"
-    ];
-
-    function $(id) {
-      return document.getElementById(id);
-    }
-
-    function bindClick(ids, handler) {
-      ids.forEach(id => {
-        const el = $(id);
-        if (el) el.addEventListener("click", handler);
-      });
-    }
-
-    function toggleMenu(forceClose = false) {
-      const shouldOpen = forceClose ? false : !mobileMenu.classList.contains("open");
-      mobileMenu.classList.toggle("open", shouldOpen);
-      menuToggle.classList.toggle("active", shouldOpen);
-    }
-
-    menuToggle?.addEventListener("click", () => toggleMenu());
-
-    mobileLinks.forEach(link => {
-      link.addEventListener("click", () => toggleMenu(true));
-    });
-
-    function shortAddress(address) {
-      if (!address) return "Non connesso";
-      return `${address.slice(0, 6)}...${address.slice(-4)}`;
-    }
-
-    function showStatus(title, message, type = "success") {
-      statusTitle.textContent = title;
-      statusText.textContent = message;
-      statusBar.className = `status-bar show ${type}`;
-      clearTimeout(showStatus._timer);
-      showStatus._timer = setTimeout(() => {
-        statusBar.className = "status-bar";
-      }, 3600);
-    }
-
-    function setWalletDisconnected() {
-      headerWalletText.textContent = "Wallet non connesso";
-      walletAddress.textContent = "Non connesso";
-      walletChain.textContent = "—";
-      walletBalance.textContent = "—";
-    }
-
-    async function getCurrentChainId() {
-      if (!window.ethereum) return null;
-      return await window.ethereum.request({ method: "eth_chainId" });
-    }
-
-    async function fetchBalance(account) {
-      if (!window.ethereum || !account) return;
-      try {
-        const balanceHex = await window.ethereum.request({
-          method: "eth_getBalance",
-          params: [account, "latest"]
+      function bindClick(ids, handler) {
+        ids.forEach((id) => {
+          const el = $(id);
+          if (el) el.addEventListener("click", handler);
         });
-
-        const wei = BigInt(balanceHex);
-        const native = Number(wei) / 1e18;
-        walletBalance.textContent = `${native.toFixed(4)} native`;
-      } catch (error) {
-        walletBalance.textContent = "Errore lettura";
-      }
-    }
-
-    async function refreshWalletUI() {
-      if (!window.ethereum) {
-        setWalletDisconnected();
-        return;
       }
 
-      try {
-        const accounts = await window.ethereum.request({ method: "eth_accounts" });
-        const chainId = await window.ethereum.request({ method: "eth_chainId" });
+      function getProvider() {
+        if (window.ethereum) return window.ethereum;
+        if (window.web3 && window.web3.currentProvider) return window.web3.currentProvider;
+        return null;
+      }
 
-        if (!accounts || !accounts.length) {
+      function toggleMenu(forceClose = false) {
+        if (!mobileMenu || !menuToggle) return;
+        const shouldOpen = forceClose ? false : !mobileMenu.classList.contains("open");
+        mobileMenu.classList.toggle("open", shouldOpen);
+        menuToggle.classList.toggle("active", shouldOpen);
+      }
+
+      if (menuToggle) {
+        menuToggle.addEventListener("click", () => toggleMenu());
+      }
+
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", () => toggleMenu(true));
+      });
+
+      function shortAddress(address) {
+        if (!address) return "Wallet non connesso";
+        return `${address.slice(0, 6)}...${address.slice(-4)}`;
+      }
+
+      function showStatus(title, message, type = "success") {
+        if (!statusBar || !statusTitle || !statusText) return;
+        statusTitle.textContent = title;
+        statusText.textContent = message;
+        statusBar.className = `status-bar show ${type}`;
+        clearTimeout(showStatus._timer);
+        showStatus._timer = setTimeout(() => {
+          statusBar.className = "status-bar";
+        }, 3600);
+      }
+
+      function setWalletDisconnected() {
+        if (mobileWalletText) mobileWalletText.textContent = "Wallet non connesso";
+        if (walletAddress) walletAddress.textContent = "Non connesso";
+        if (walletChain) walletChain.textContent = "—";
+        if (walletBalance) walletBalance.textContent = "—";
+      }
+
+      async function getCurrentChainId() {
+        const provider = getProvider();
+        if (!provider?.request) return null;
+        return await provider.request({ method: "eth_chainId" });
+      }
+
+      async function fetchBalance(account) {
+        const provider = getProvider();
+        if (!provider?.request || !account || !walletBalance) return;
+
+        try {
+          const balanceHex = await provider.request({
+            method: "eth_getBalance",
+            params: [account, "latest"]
+          });
+
+          const wei = BigInt(balanceHex);
+          const native = Number(wei) / 1e18;
+          walletBalance.textContent = `${native.toFixed(4)} native`;
+        } catch (error) {
+          walletBalance.textContent = "Errore lettura";
+        }
+      }
+
+      async function refreshWalletUI() {
+        const provider = getProvider();
+        if (!provider?.request) {
           setWalletDisconnected();
           return;
         }
 
-        const account = accounts[0];
-        headerWalletText.textContent = shortAddress(account);
-        walletAddress.textContent = account;
-        walletChain.textContent = `${chainId} (${parseInt(chainId, 16)})`;
+        try {
+          const accounts = await provider.request({ method: "eth_accounts" });
+          const chainId = await provider.request({ method: "eth_chainId" });
 
-        await fetchBalance(account);
-      } catch (error) {
-        setWalletDisconnected();
-      }
-    }
+          if (!accounts || !accounts.length) {
+            setWalletDisconnected();
+            return;
+          }
 
-    async function connectWallet() {
-      if (!window.ethereum) {
-        showStatus(
-          "Wallet non trovato",
-          "Installa MetaMask o un wallet EVM compatibile per connetterti.",
-          "error"
-        );
-        return;
-      }
+          const account = accounts[0];
+          const short = shortAddress(account);
 
-      try {
-        const accounts = await window.ethereum.request({
-          method: "eth_requestAccounts"
-        });
+          if (mobileWalletText) mobileWalletText.textContent = short;
+          if (walletAddress) walletAddress.textContent = account;
+          if (walletChain) walletChain.textContent = `${chainId} (${parseInt(chainId, 16)})`;
 
-        const chainId = await getCurrentChainId();
-        const account = accounts[0];
-
-        headerWalletText.textContent = shortAddress(account);
-        walletAddress.textContent = account;
-        walletChain.textContent = `${chainId} (${parseInt(chainId, 16)})`;
-
-        await fetchBalance(account);
-
-        showStatus(
-          "Wallet connesso",
-          `Connessione riuscita con account ${shortAddress(account)}.`,
-          "success"
-        );
-
-        toggleMenu(true);
-      } catch (error) {
-        showStatus(
-          "Connessione annullata",
-          "L'utente ha annullato o il wallet ha restituito un errore.",
-          "error"
-        );
-      }
-    }
-
-    async function addPepuNetwork() {
-      if (!window.ethereum) {
-        showStatus(
-          "Wallet richiesto",
-          "Per aggiungere la rete serve un wallet browser come MetaMask.",
-          "error"
-        );
-        return;
+          await fetchBalance(account);
+        } catch (error) {
+          setWalletDisconnected();
+        }
       }
 
-      try {
-        await window.ethereum.request({
-          method: "wallet_addEthereumChain",
-          params: [{
-            chainId: PEPU_NETWORK.chainIdHex,
-            chainName: PEPU_NETWORK.chainName,
-            rpcUrls: PEPU_NETWORK.rpcUrls,
-            blockExplorerUrls: PEPU_NETWORK.blockExplorerUrls,
-            nativeCurrency: PEPU_NETWORK.nativeCurrency
-          }]
-        });
+      async function connectWallet() {
+        const provider = getProvider();
 
-        showStatus(
-          "Rete aggiunta",
-          "La rete PEPU Unchained V2 è stata proposta al wallet con successo.",
-          "success"
-        );
+        if (!provider?.request) {
+          showStatus(
+            "Wallet non trovato",
+            "Apri il sito con MetaMask o un wallet EVM compatibile.",
+            "error"
+          );
+          return;
+        }
 
-        await refreshWalletUI();
-      } catch (error) {
-        showStatus(
-          "Aggiunta rete fallita",
-          "Il wallet ha rifiutato o non ha completato l'aggiunta della rete.",
-          "error"
-        );
+        try {
+          const accounts = await provider.request({
+            method: "eth_requestAccounts"
+          });
+
+          if (!accounts || !accounts.length) {
+            showStatus("Nessun account", "Nessun account disponibile nel wallet.", "error");
+            return;
+          }
+
+          const chainId = await getCurrentChainId();
+          const account = accounts[0];
+          const short = shortAddress(account);
+
+          if (mobileWalletText) mobileWalletText.textContent = short;
+          if (walletAddress) walletAddress.textContent = account;
+          if (walletChain && chainId) walletChain.textContent = `${chainId} (${parseInt(chainId, 16)})`;
+
+          await fetchBalance(account);
+
+          showStatus(
+            "Wallet connesso",
+            `Connessione riuscita con account ${short}.`,
+            "success"
+          );
+
+          toggleMenu(true);
+        } catch (error) {
+          const msg = error?.message || "";
+          showStatus(
+            "Connessione fallita",
+            msg.includes("rejected") || msg.includes("User rejected")
+              ? "Connessione annullata dall'utente."
+              : "Il wallet non ha completato la connessione.",
+            "error"
+          );
+        }
       }
-    }
 
-    async function switchToPepuNetwork() {
-      if (!window.ethereum) {
-        showStatus(
-          "Wallet richiesto",
-          "Per cambiare rete serve un wallet browser come MetaMask.",
-          "error"
-        );
-        return;
+      async function addPepuNetwork() {
+        const provider = getProvider();
+
+        if (!provider?.request) {
+          showStatus(
+            "Wallet richiesto",
+            "Serve un wallet browser come MetaMask.",
+            "error"
+          );
+          return;
+        }
+
+        try {
+          await provider.request({
+            method: "wallet_addEthereumChain",
+            params: [{
+              chainId: PEPU_NETWORK.chainIdHex,
+              chainName: PEPU_NETWORK.chainName,
+              rpcUrls: PEPU_NETWORK.rpcUrls,
+              blockExplorerUrls: PEPU_NETWORK.blockExplorerUrls,
+              nativeCurrency: PEPU_NETWORK.nativeCurrency
+            }]
+          });
+
+          showStatus(
+            "Rete aggiunta",
+            "La rete PEPU Unchained V2 è stata aggiunta.",
+            "success"
+          );
+
+          await refreshWalletUI();
+        } catch (error) {
+          showStatus(
+            "Aggiunta rete fallita",
+            "Il wallet ha rifiutato o non ha completato l'operazione.",
+            "error"
+          );
+        }
       }
 
-      try {
-        await window.ethereum.request({
-          method: "wallet_switchEthereumChain",
-          params: [{ chainId: PEPU_NETWORK.chainIdHex }]
-        });
+      async function switchToPepuNetwork() {
+        const provider = getProvider();
 
-        showStatus(
-          "Rete cambiata",
-          "Ora il wallet è impostato su PEPU Unchained V2.",
-          "success"
-        );
+        if (!provider?.request) {
+          showStatus(
+            "Wallet richiesto",
+            "Serve un wallet browser come MetaMask.",
+            "error"
+          );
+          return;
+        }
 
-        await refreshWalletUI();
-      } catch (error) {
-        if (error && (error.code === 4902 || String(error.message).includes("4902"))) {
-          try {
-            await addPepuNetwork();
-            await window.ethereum.request({
-              method: "wallet_switchEthereumChain",
-              params: [{ chainId: PEPU_NETWORK.chainIdHex }]
-            });
+        try {
+          await provider.request({
+            method: "wallet_switchEthereumChain",
+            params: [{ chainId: PEPU_NETWORK.chainIdHex }]
+          });
 
-            showStatus(
-              "Rete aggiunta e selezionata",
-              "PEPU Unchained V2 è stata aggiunta e attivata nel wallet.",
-              "success"
-            );
+          showStatus(
+            "Rete cambiata",
+            "Ora il wallet è impostato su PEPU Unchained V2.",
+            "success"
+          );
 
-            await refreshWalletUI();
-          } catch (nestedError) {
+          await refreshWalletUI();
+        } catch (error) {
+          if (error && (error.code === 4902 || String(error.message).includes("4902"))) {
+            try {
+              await addPepuNetwork();
+              await provider.request({
+                method: "wallet_switchEthereumChain",
+                params: [{ chainId: PEPU_NETWORK.chainIdHex }]
+              });
+
+              showStatus(
+                "Rete aggiunta e selezionata",
+                "PEPU Unchained V2 è stata aggiunta e attivata nel wallet.",
+                "success"
+              );
+
+              await refreshWalletUI();
+            } catch (nestedError) {
+              showStatus(
+                "Switch non completato",
+                "La rete non è stata selezionata dal wallet.",
+                "error"
+              );
+            }
+          } else {
             showStatus(
               "Switch non completato",
-              "La rete non è stata selezionata dal wallet.",
+              "Il wallet ha rifiutato o non ha completato il cambio rete.",
               "error"
             );
           }
-        } else {
+        }
+      }
+
+      async function addPepuTokenToWallet() {
+        const provider = getProvider();
+
+        if (!provider?.request) {
           showStatus(
-            "Switch non completato",
-            "Il wallet ha rifiutato o non ha completato il cambio rete.",
+            "Wallet richiesto",
+            "Serve un wallet browser come MetaMask.",
+            "error"
+          );
+          return;
+        }
+
+        try {
+          const wasAdded = await provider.request({
+            method: "wallet_watchAsset",
+            params: PEPU_ETH_TOKEN
+          });
+
+          if (wasAdded) {
+            showStatus(
+              "Token aggiunto",
+              "$PEPU su Ethereum è stato aggiunto al wallet.",
+              "success"
+            );
+          } else {
+            showStatus(
+              "Operazione annullata",
+              "L'aggiunta del token è stata annullata.",
+              "error"
+            );
+          }
+        } catch (error) {
+          showStatus(
+            "Aggiunta token fallita",
+            "Non sono riuscito ad aggiungere il token al wallet.",
             "error"
           );
         }
       }
-    }
 
-    async function addPepuTokenToWallet() {
-      if (!window.ethereum) {
-        showStatus(
-          "Wallet richiesto",
-          "Per aggiungere il token serve un wallet browser come MetaMask.",
-          "error"
-        );
-        return;
-      }
+      async function copyContract() {
+        if (!tokenContract) return;
 
-      try {
-        const wasAdded = await window.ethereum.request({
-          method: "wallet_watchAsset",
-          params: PEPU_ETH_TOKEN
-        });
-
-        if (wasAdded) {
+        try {
+          await navigator.clipboard.writeText(tokenContract);
           showStatus(
-            "Token aggiunto",
-            "$PEPU su Ethereum è stato aggiunto al wallet.",
+            "Contract copiato",
+            "L'indirizzo del token $PEPU è stato copiato.",
             "success"
           );
-        } else {
+        } catch (error) {
           showStatus(
-            "Operazione annullata",
-            "L'aggiunta del token è stata annullata.",
+            "Copia non riuscita",
+            "Non sono riuscito a copiare il contract address.",
             "error"
           );
         }
-      } catch (error) {
-        showStatus(
-          "Aggiunta token fallita",
-          "Non sono riuscito ad aggiungere il token al wallet.",
-          "error"
-        );
       }
-    }
 
-    async function copyContract() {
-      try {
-        await navigator.clipboard.writeText(tokenContract);
-        showStatus(
-          "Contract copiato",
-          "L'indirizzo del token $PEPU è stato copiato negli appunti.",
-          "success"
-        );
-      } catch (error) {
-        showStatus(
-          "Copia non riuscita",
-          "Non sono riuscito a copiare il contract address.",
-          "error"
-        );
+      bindClick(connectButtonIds, connectWallet);
+      bindClick(addNetworkButtonIds, addPepuNetwork);
+      bindClick(switchNetworkButtonIds, switchToPepuNetwork);
+      bindClick(addTokenButtonIds, addPepuTokenToWallet);
+      bindClick(copyContractButtonIds, copyContract);
+
+      const provider = getProvider();
+
+      if (provider?.request) {
+        refreshWalletUI();
+
+        if (provider.on) {
+          provider.on("accountsChanged", refreshWalletUI);
+          provider.on("chainChanged", refreshWalletUI);
+        }
+      } else {
+        setWalletDisconnected();
       }
-    }
-
-    bindClick(connectButtonIds, connectWallet);
-    bindClick(addNetworkButtonIds, addPepuNetwork);
-    bindClick(switchNetworkButtonIds, switchToPepuNetwork);
-    bindClick(addTokenButtonIds, addPepuTokenToWallet);
-    bindClick(copyContractButtonIds, copyContract);
-
-    if (window.ethereum) {
-      refreshWalletUI();
-      window.ethereum.on?.("accountsChanged", refreshWalletUI);
-      window.ethereum.on?.("chainChanged", refreshWalletUI);
-    } else {
-      setWalletDisconnected();
-    }
+    });
   </script>
 </body>
 </html>
